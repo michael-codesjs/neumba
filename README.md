@@ -1,1 +1,2 @@
-Everything that makes up the **neumba** real estate platform for the Zambian real estate market.
+## **Neumba - Real-estate & Estate Management.**
+This repository contains everything that makes up the **nuemba** real-estate and estate managment service.

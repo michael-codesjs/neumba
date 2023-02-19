@@ -1,0 +1,19 @@
+{
+  "name": "neumba",
+  "version": "0.0.1",
+  "description": "Real-estate and estate management service.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --silent"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michael-codesjs/neumba.git"
+  },
+  "author": "Michael Phiri",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/michael-codesjs/neumba/issues"
+  },
+  "homepage": "https://github.com/michael-codesjs/neumba#readme"
+}
