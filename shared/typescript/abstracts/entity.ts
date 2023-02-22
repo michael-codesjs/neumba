@@ -1,3 +1,5 @@
+import { Attributes } from "./attributes";
+import { CommonAttributes } from "./types";
 
 /**
  * Base abstract class to be extends by most if not all of our domain entities.
@@ -5,6 +7,8 @@
  */
 
 export abstract class Entity {
+
+  public abstract readonly attributes: Attributes<CommonAttributes>;
 
   constructor({ }: {} = {}) { } // {}: {} = {} is for constructor signature purposes only
   /*eslint no-empty-pattern: "off"*/
