@@ -1,0 +1,24 @@
+enum EntityType {
+  ESTATE
+}
+
+interface Common {
+  id: ID!
+  entityType: EntityType!
+  creator: ID!
+  creatorType: EntityType!
+  created: AWSDateTime!
+  modified: AWSDateTime
+  discontinued: Boolean!
+}
+
+type Estate implements Common {
+  id: ID!
+  entityType: EntityType!
+  creator: ID!
+  creatorType: EntityType!
+  created: AWSDateTime!
+  modified: AWSDateTime
+  discontinued: Boolean!
+  name: String!
+}

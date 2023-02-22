@@ -15,5 +15,21 @@
   "bugs": {
     "url": "https://github.com/michael-codesjs/neumba/issues"
   },
-  "homepage": "https://github.com/michael-codesjs/neumba#readme"
+  "homepage": "https://github.com/michael-codesjs/neumba#readme",
+  "dependencies": {
+    "@serverless/typescript": "^3.27.0",
+    "ulid": "^2.3.0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^3.1.0",
+    "@graphql-codegen/client-preset": "^2.1.0",
+    "@types/node": "^18.14.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
+  },
+  "resolutions": {
+    "graphql": "^16.1.0",
+    "@babel/core": "^7.0.0-0",
+    "@types/node": "^16.0.6"
+  }
 }

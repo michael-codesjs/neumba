@@ -14,17 +14,17 @@ provider "aws" {
 variable "stage" {
   type        = string
   default     = "dev"
-  description = "Stage the estate-management service infrastructure is created in."
+  description = "Stage the estate service infrastructure is created in."
 }
 
 variable "region" {
   type        = string
   default     = "eu-central-1"
-  description = "Region the estate trade service infrastructure is created in."
+  description = "Region the estate service infrastructure is created in."
 }
 
-module "storage" {
-  source = "./storage"
+module "infrastructure" {
+  source = "./infrastructure"
   stage  = var.stage
   region = var.region
 }
