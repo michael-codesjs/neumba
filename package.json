@@ -1,7 +1,7 @@
 {
   "name": "neumba",
   "version": "0.0.1",
-  "description": "Real-estate and estate management service.",
+  "description": "Estate trade and management service.",
   "main": "index.js",
   "scripts": {
     "test": "jest --silent"
