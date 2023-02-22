@@ -18,6 +18,7 @@
   "homepage": "https://github.com/michael-codesjs/neumba#readme",
   "dependencies": {
     "@serverless/typescript": "^3.27.0",
+    "dotenv": "^16.0.3",
     "ulid": "^2.3.0"
   },
   "devDependencies": {

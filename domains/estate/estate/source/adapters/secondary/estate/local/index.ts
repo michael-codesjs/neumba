@@ -1,0 +1,1 @@
+export { LocalEstateDatabaseAdapter } from "./adapter";

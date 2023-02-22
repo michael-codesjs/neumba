@@ -1,0 +1,1 @@
+export { EstateDynamoDbAdapter } from "./estate/dynamoDb";
