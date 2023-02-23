@@ -8,7 +8,7 @@ import { CommonAttributes } from "./types";
 
 export abstract class Entity {
 
-  public abstract readonly attributes: Attributes<CommonAttributes>;
+  protected abstract readonly attributes: Attributes<CommonAttributes>;
 
   constructor({ }: {} = {}) { } // {}: {} = {} is for constructor signature purposes only
   /*eslint no-empty-pattern: "off"*/

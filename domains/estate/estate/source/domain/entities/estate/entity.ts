@@ -8,7 +8,7 @@ import { Estate as TEstate } from "../../../../../../../shared/typescript/types/
 
 export class Estate extends Entity {
 
-  public readonly attributes = new Attributes();
+  protected readonly attributes = new Attributes();
 
   constructor(attributes: Partial<TEstate>) {
     super();
