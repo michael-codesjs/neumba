@@ -6,7 +6,7 @@ resource "aws_dynamodb_table" "estate_dynamoDb_table" {
     Name        = "neumba-estate-${var.stage}"
     Description = "neumba table for all estate entities."
     Application = "neumba"
-    Service     = "estate-management"
+    Service     = "estate"
     Stage       = var.stage
   }
 
@@ -99,19 +99,19 @@ resource "aws_dynamodb_table" "estate_dynamoDb_table" {
 }
 
 resource "aws_ssm_parameter" "estate_table_name" {
-  name  = "/neumba/${var.stage}/service/estate-management/storage/table/estate/name"
+  name  = "/neumba/${var.stage}/service/estate/storage/table/estate/name"
   type  = "String"
   value = aws_dynamodb_table.estate_dynamoDb_table.name
 }
 
 resource "aws_ssm_parameter" "estate_table_arn" {
-  name  = "/neumba/${var.stage}/service/estate-management/storage/table/estate/arn"
+  name  = "/neumba/${var.stage}/service/estate/storage/table/estate/arn"
   type  = "String"
   value = aws_dynamodb_table.estate_dynamoDb_table.arn
 }
 
 resource "aws_ssm_parameter" "estate_table_stream_arn" {
-  name  = "/neumba/${var.stage}/service/estate-management/storage/table/estate/stream/arn"
+  name  = "/neumba/${var.stage}/service/estate/storage/table/estate/stream/arn"
   type  = "String"
   value = aws_dynamodb_table.estate_dynamoDb_table.stream_arn
 }

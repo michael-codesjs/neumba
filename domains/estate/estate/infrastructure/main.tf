@@ -1,11 +1,17 @@
 variable "stage" {
   type        = string
   nullable    = false
-  description = "Stage the storage infrastructure is created in."
+  description = "Stage the estate service infrastructure is created in."
 }
 
 variable "region" {
   type        = string
   nullable    = false
-  description = "Region the storage infrastructure is created in."
+  description = "Region the estate service infrastructure is created in."
+}
+
+module "storage" {
+  source = "./storage"
+  region = var.region
+  stage  = var.stage
 }
