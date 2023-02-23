@@ -12,6 +12,11 @@ interface Common {
   discontinued: Boolean!
 }
 
+type Coordinates {
+  x: String!
+  y: String!
+}
+
 type Estate implements Common {
   id: ID!
   entityType: EntityType!
@@ -21,4 +26,5 @@ type Estate implements Common {
   modified: AWSDateTime
   discontinued: Boolean!
   name: String!
+  coorindates: Coordinates
 }

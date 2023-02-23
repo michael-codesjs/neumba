@@ -1,4 +1,5 @@
 import { Attributes } from "./attributes";
+import { NotPutable } from "./errors";
 import { CommonAttributes } from "./types";
 
 /**
@@ -12,5 +13,11 @@ export abstract class Entity {
 
   constructor({ }: {} = {}) { } // {}: {} = {} is for constructor signature purposes only
   /*eslint no-empty-pattern: "off"*/
+
+  /** checks if an entity has all of it's required attributes for persistence. */
+  checkPutability(): void {
+    const isPutable = this.attributes.isPutable();
+    if(!isPutable) throw new NotPutable();
+  }
 
 }

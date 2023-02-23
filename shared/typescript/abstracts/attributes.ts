@@ -1,5 +1,4 @@
 import { ulid } from "ulid";
-import { EntityType } from "../types/api";
 import { getEntityTypes } from "../utilities/functions/miscellanous";
 import { Attribute } from "./attribute";
 import { MutateImmutable } from "./errors";
@@ -25,7 +24,7 @@ export class Attributes<T extends CommonAttributesPlusOthers> extends Publisher 
 		this.Attributes.entityType = new Attribute<T["entityType"]["type"], true>({
 			required: true,
 			value: null as T["entityType"]["type"],
-			validate: entityType => Boolean(EntityType[entityType as unknown as keyof EntityType]),
+			validate: entityType => getEntityTypes().includes(entityType),
 			immutable: true
 		});
 
@@ -113,7 +112,7 @@ export class Attributes<T extends CommonAttributesPlusOthers> extends Publisher 
 
 	private forEachOnMutate(
 		attributes: Partial<EntriesFromAttributesSchema<T>>,
-		setter: (value: any, key: string, modified?: Date) => void // REVIEW: properly type this
+		setter: (value: any, key: string, modified?: Date) => void // REVIEW: properly strict type this
 	) {
 
 		const modified = new Date();
@@ -138,6 +137,8 @@ export class Attributes<T extends CommonAttributesPlusOthers> extends Publisher 
 			attribute.set(value, modified);
 		});
 
+		this.publish(); // notify subscribers of value changes
+
 	}
 
 	/** Get an attributes value */
@@ -159,49 +160,26 @@ export class Attributes<T extends CommonAttributesPlusOthers> extends Publisher 
 	valid(): Partial<EntriesFromAttributesSchema<T>> {
 		return Object.entries(this.Attributes)
 			.reduce((collective, [key, value]) => {
-				if (value.valid()) {
-					collective[key as keyof typeof collective] = value.value;
-				}
+				if (value.nullish()) return collective; // return early if nullish
+				collective[key as keyof typeof collective] = value.value;
 				return collective;
 			}, {} as Partial<EntriesFromAttributesSchema<T>>);
 	}
 
-	/** Checks if we have enough values to write to the table */
+	/** Checks if we have enough values to persist attributes to a store. */
 	isPutable(): boolean {
 		// attributes collection is not putable if at least one of it's attributes are not putable
 		return !(Object.values(this.Attributes).some(attribute => !attribute.isPutable()));
 	}
 
-	/** Get putable version of attributes */
-	putable() {
-		return this.entries()
-			.reduce((cumulative, [key, value]) => {
-				if (value.isPutable()) cumulative[key as keyof EntriesFromAttributesSchema<T>] = value.get();
-				return cumulative;
-			}, {} as EntriesFromAttributesSchema<T>);
-	}
-
-	/** Checks if we have values we can update */
+	/** Checks if we have values we need to sync with a store. */
 	isUpdateable(): boolean {
 		return Object.values(this.Attributes).some(attribute => attribute.isUpdateable());
-	}
-
-	/** Get updatable versions of attributes */
-	updateable() {
-		return this.entries()
-			.reduce((cumulative, [key, value]) => {
-				if (value.isUpdateable(new Date(this.get("modified")))) cumulative[key as keyof EntriesFromAttributesSchema<T>] = value.get();
-				return cumulative;
-			}, {} as EntriesFromAttributesSchema<T>);
 	}
 
 	/** Gets list of all attributes */
 	keys<R extends T = T>(): Array<keyof R> {
 		return Object.keys(this.Attributes);
-	}
-
-	private entries<R extends T = T>(): Array<[keyof R, ToAttributeRecord<R>[keyof R]]> {
-		return Object.entries(this.Attributes);
 	}
 
 }
