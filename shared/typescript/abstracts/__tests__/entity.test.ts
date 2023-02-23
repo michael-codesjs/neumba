@@ -24,8 +24,8 @@ describe("Entity", () => {
 
   test(".checkPutability() truthy", () => {
     const usable = new Usable();
-    usable.setup();
-    usable.checkPutability(); // .checkPutability not throwing an error is a W for so we do nothing else and let the test pass
+    usable.setup(); // setup required attributes
+    usable.checkPutability(); // .checkPutability not throwing an error is a W for us so we do nothing else and let the test pass
   });
 
 });
