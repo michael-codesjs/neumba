@@ -1,10 +1,9 @@
 import { Chance } from "chance";
-import { EntityType } from "../../../../../../../../../shared/typescript/types";
 import { COMMON_ATTRIBUTES } from "../../../../../../../../../shared/typescript/utilities/constants";
-import { getRandomEntityType } from "../../../../../../../../../shared/typescript/utilities/functions/miscellanous";
 import { Estate } from "../../../../../domain/models";
 import { EstateDynamoDbAdapter } from "../../dynamoDb";
 import { estate } from "../../dynamoDb/one-table/model";
+import { getRandomEstateAttributes } from "../utilities";
 
 jest.mock("../../dynamoDb/one-table/model");
 
@@ -13,19 +12,6 @@ describe("DynamoDbDatabaseAdapter", () => {
   let mockedEstateModel: jest.Mocked<typeof estate> = jest.mocked(estate);
   let adapter: EstateDynamoDbAdapter;
 
-  const chance = new Chance();
-
-  const getRandomEstate = (): Estate => ({
-    entityType: EntityType.Estate,
-    id: chance.guid(),
-    creatorType: getRandomEntityType(),
-    creator: chance.guid(),
-    created: chance.date(),
-    modified: chance.date(),
-    discontinued: chance.bool(),
-    name: chance.name()
-  })
-
   beforeEach(() => {
     adapter = new EstateDynamoDbAdapter();
   });
@@ -33,7 +19,7 @@ describe("DynamoDbDatabaseAdapter", () => {
   test(".get", async () => {
 
     // Arrange
-    const dummyEstate = getRandomEstate();
+    const dummyEstate = getRandomEstateAttributes();
     const dummyEstateStore = { [dummyEstate.id]: dummyEstate };
 
     mockedEstateModel.get.mockImplementationOnce(async (params: Partial<Estate>) => dummyEstateStore[params.id]);
@@ -56,8 +42,8 @@ describe("DynamoDbDatabaseAdapter", () => {
 
     // Arrange
     const dummyEstateStore: Record<string, Estate> = {};
-    const dummyEstate = getRandomEstate();
-    
+    const dummyEstate = getRandomEstateAttributes();
+
     mockedEstateModel.create.mockImplementationOnce(async (params: Estate) => {
       dummyEstateStore[params.id] = params;
       return params;
@@ -77,7 +63,7 @@ describe("DynamoDbDatabaseAdapter", () => {
   test(".update", async () => {
 
     // Arrange
-    const dummyEstate = getRandomEstate();
+    const dummyEstate = getRandomEstateAttributes();
     const dummyEstateStore = { [dummyEstate.id]: dummyEstate };
 
     mockedEstateModel.update.mockImplementationOnce(async (params: Partial<Estate>) => {
@@ -91,7 +77,7 @@ describe("DynamoDbDatabaseAdapter", () => {
     // Act
 
     const postUpdateDummyEstate = {
-      ...getRandomEstate(),
+      ...getRandomEstateAttributes(),
       id: dummyEstate.id
     };
 

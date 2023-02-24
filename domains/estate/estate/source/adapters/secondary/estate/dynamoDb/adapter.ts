@@ -1,5 +1,6 @@
 
 import { Estate } from "../../../../domain/models";
+import { EstateNotFound } from "../../../../errors/estate-not-found";
 import { EstateDatabaseAdapter } from "../../../../interfaces/adapters";
 import { estate } from "./one-table";
 
@@ -8,6 +9,7 @@ export class EstateDynamoDbAdapter implements EstateDatabaseAdapter {
 
   async get(id: string): Promise<Estate> {
     const item: Estate = await estate.get({ id }); // get estate entity properties.
+    if (!item) throw new EstateNotFound();
     return item;
   }
 

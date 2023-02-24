@@ -1,6 +1,5 @@
 import { Estate } from "../domain/entities/estate";
-import { Estate as TEstate } from "../domain/models";
-import { EstateDatabaseAdapter } from "../interfaces/adapters"
+import { EstateDatabaseAdapter } from "../interfaces/adapters";
 
 type EstateRepositoryConstructorParams = {
   adapter: EstateDatabaseAdapter
@@ -20,12 +19,14 @@ export class EstateRepository {
     return Estate.fromDTO(postGetDTO);
   }
 
-  async update(dto: TEstate): Promise<Estate> {
+  async update(estate: Estate): Promise<Estate> {
+    const dto = estate.toDTO();
     const postUpdateDTO = await this.adapter.update(dto);
     return Estate.fromDTO(postUpdateDTO);
   }
 
-  async put(dto: TEstate): Promise<Estate> {
+  async put(estate: Estate): Promise<Estate> {
+    const dto = estate.toDTO();
     const postPutDTO = await this.adapter.put(dto);
     return Estate.fromDTO(postPutDTO);
   }
