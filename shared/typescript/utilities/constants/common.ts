@@ -13,3 +13,5 @@ export const plugins = Object.freeze( [
   "serverless-export-env",
   "serverless-iam-roles-per-function",
 ]);
+
+export const COMMON_ATTRIBUTES = Object.freeze(["entityType", "id", "creatorType", "creator", "created", "modified", "discontinued"]);

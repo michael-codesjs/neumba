@@ -3,6 +3,5 @@ module.exports = {
   verbose: true,
   maxConcurrency: 10,
   testTimeout: 2000000,
-  testRegex: ".test.ts$",
-  preset: "@shelf/jest-dynamodb"
+  testRegex: ".test.ts$"
 };

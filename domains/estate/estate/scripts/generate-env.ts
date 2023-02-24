@@ -1,6 +1,7 @@
 import { GetParameterCommand, SSMClient } from "@aws-sdk/client-ssm";
 import chalk from "chalk";
 import { writeFileSync } from "fs";
+import { join } from "path";
 import ora from "ora";
 
 console.clear();
@@ -48,7 +49,7 @@ const VARIABLES = Object.freeze({
 
     }
 
-    writeFileSync("../.env", envString, { encoding: "utf-8" }); // export .env to ../
+    writeFileSync(join(__dirname, "../.env"), envString, { encoding: "utf-8" }); // export .env to ../
 
     console.log(chalk.bold("\n The .env file has been exported to the root folder of the sub-domain\n"));
 

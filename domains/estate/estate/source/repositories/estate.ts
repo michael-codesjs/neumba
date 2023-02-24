@@ -1,36 +1,31 @@
-import { Estate } from "../domain/entities/estate"
+import { Estate } from "../domain/entities/estate";
+import { Estate as TEstate } from "../domain/models";
 import { EstateDatabaseAdapter } from "../interfaces/adapters"
 
 type EstateRepositoryConstructorParams = {
-  estate: Estate,
   adapter: EstateDatabaseAdapter
 }
 
 export class EstateRepository {
 
-  readonly estate: Estate;
   adapter: EstateDatabaseAdapter;
 
   constructor(params: EstateRepositoryConstructorParams) {
-    const { estate, adapter } = params;
-    this.estate = estate;
+    const { adapter } = params;
     this.adapter = adapter;
   }
 
-  async get(): Promise<Estate> {
-    const id = this.estate.attributes.get("id");
-    const postGetDTO =  await this.adapter.get(id);
+  async get(id: string): Promise<Estate> {
+    const postGetDTO = await this.adapter.get(id);
     return Estate.fromDTO(postGetDTO);
   }
 
-  async update(): Promise<Estate> {
-    const dto = this.estate.toDTO();
+  async update(dto: TEstate): Promise<Estate> {
     const postUpdateDTO = await this.adapter.update(dto);
     return Estate.fromDTO(postUpdateDTO);
   }
 
-  async put(): Promise<Estate> {
-    const dto = this.estate.toDTO();
+  async put(dto: TEstate): Promise<Estate> {
     const postPutDTO = await this.adapter.put(dto);
     return Estate.fromDTO(postPutDTO);
   }

@@ -28,5 +28,6 @@ export const table = new Table({
     models: {
 
     }
-  }
+  },
+  partial: true
 });

@@ -1,5 +1,5 @@
 import { Model } from "dynamodb-onetable";
-import { table } from ".";
+import { table } from "./table";
 import { EntityType } from "../../../../../../../../../shared/typescript/types";
 import { Estate } from "../../../../../domain/models";
 

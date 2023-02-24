@@ -8,7 +8,10 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "generate-env": "ts-node scripts/generate-env.ts"
+    "generate-env": "ts-node scripts/generate-env.ts",
+    "test:adapters": "jest source/adapters",
+    "test:adapters:primary": "jest source/adapters/primary",
+    "test:adapters:secondary": "jest source/adapters/secondary"
   },
   "dependencies": {
     "@middy/core": "^3.4.0",

@@ -1,4 +1,4 @@
-import { Estate } from "../../../../../../../../shared/typescript/types";
+import { Estate } from "../../../../domain/models";
 import { EstateDatabaseAdapter } from "../../../../interfaces/adapters";
 
 export class LocalEstateDatabaseAdapter implements EstateDatabaseAdapter {
