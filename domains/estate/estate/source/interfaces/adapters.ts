@@ -1,4 +1,4 @@
-import { Estate } from "../../../../../shared/typescript/types";
+import { Estate } from "../domain/models";
 
 export interface EstateDatabaseAdapter {
   get(id: string): Promise<Estate>,
