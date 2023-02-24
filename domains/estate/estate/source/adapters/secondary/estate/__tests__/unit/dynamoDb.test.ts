@@ -6,7 +6,7 @@ import { Estate } from "../../../../../domain/models";
 import { EstateDynamoDbAdapter } from "../../dynamoDb";
 import { estate } from "../../dynamoDb/one-table/model";
 
-jest.mock("../dynamoDb/one-table/model");
+jest.mock("../../dynamoDb/one-table/model");
 
 describe("DynamoDbDatabaseAdapter", () => {
 
@@ -43,6 +43,7 @@ describe("DynamoDbDatabaseAdapter", () => {
 
     // Assert
     expect(mockedEstateModel.get).toHaveBeenCalledTimes(1);
+    expect(item).toStrictEqual(dummyEstateStore[dummyEstate.id]);
     expect(Object.keys(item))
       .toEqual(expect.arrayContaining([
         ...COMMON_ATTRIBUTES,
