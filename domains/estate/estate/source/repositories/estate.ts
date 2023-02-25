@@ -1,17 +1,13 @@
+import { EstateDynamoDbAdapter } from "../adapters/secondary";
 import { Estate } from "../domain/entities/estate";
 import { EstateDatabaseAdapter } from "../interfaces/adapters";
 
-type EstateRepositoryConstructorParams = {
-  adapter: EstateDatabaseAdapter
-}
-
 export class EstateRepository {
 
-  adapter: EstateDatabaseAdapter;
+  private adapter: EstateDatabaseAdapter;
 
-  constructor(params: EstateRepositoryConstructorParams) {
-    const { adapter } = params;
-    this.adapter = adapter;
+  constructor() {
+    this.adapter = new EstateDynamoDbAdapter();
   }
 
   async get(id: string): Promise<Estate> {

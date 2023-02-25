@@ -1,1 +1,1 @@
-export { EstateDynamoDbAdapter } from "./adapter";
+export * from "./adapter";

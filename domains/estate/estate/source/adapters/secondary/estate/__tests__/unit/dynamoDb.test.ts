@@ -1,4 +1,3 @@
-import { Chance } from "chance";
 import { COMMON_ATTRIBUTES } from "../../../../../../../../../shared/typescript/utilities/constants";
 import { Estate } from "../../../../../domain/models";
 import { EstateDynamoDbAdapter } from "../../dynamoDb";

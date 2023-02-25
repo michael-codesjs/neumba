@@ -33,7 +33,7 @@ describe("DynamoDbDatabaseAdpater", () => {
 
   test(".update", async () => {
 
-    const preUpdateEstate = await createEstate(); // persist estate entity to dynamoDb table
+    const preUpdateEstate = await createEstate(); // persist estate entity to dynamoDb table.
 
     const postUpdateProps = {
       ...getRandomEstateAttributes(),
@@ -43,7 +43,7 @@ describe("DynamoDbDatabaseAdpater", () => {
     await adapter.update(postUpdateProps) // update persisted estate entity via adapter.
     const postUpdateEstate = await estate.get({ id: preUpdateEstate.id }); // get updated estate entity from table.
 
-    expect(postUpdateEstate).toStrictEqual(postUpdateProps); // assert
+    expect(postUpdateEstate).toStrictEqual(postUpdateProps); // assert.
 
   });
 
