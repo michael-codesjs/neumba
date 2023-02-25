@@ -1,3 +1,8 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
 enum EntityType {
   ESTATE
 }
@@ -27,4 +32,22 @@ type Estate implements Common {
   discontinued: Boolean!
   name: String!
   coorindates: Coordinates
+}
+
+input CoordinatesInput {
+  x: String!
+  y: String!
+}
+
+input CreateEstateInput {
+  name: String!
+  coorindates: CoordinatesInput
+}
+
+type Query {
+  getEstate(id: String!): Estate! @aws_cognito_user_pools
+}
+
+type Mutation {
+  createEstate(input: CreateEstateInput!): Estate! @aws_cognito_user_pools
 }

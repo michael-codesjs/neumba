@@ -1,5 +1,4 @@
 import { config } from ".";
-import { esBuild } from ".";
 
 export const providerSettings = Object.freeze({
   name: config.provider,
@@ -8,10 +7,15 @@ export const providerSettings = Object.freeze({
   runtime: config.runtime
 });
 
-export const plugins = Object.freeze( [
+export const plugins = Object.freeze([
   "serverless-esbuild",
   "serverless-export-env",
   "serverless-iam-roles-per-function",
-]);
+] as const);
 
-export const COMMON_ATTRIBUTES = Object.freeze(["entityType", "id", "creatorType", "creator", "created", "modified", "discontinued"]);
+export const commonCustom = Object.freeze({
+  region: "${opt:region, self:provider.region}",
+  stage: "${opt:stage, self:provider.stage}"
+});
+
+export const COMMON_ATTRIBUTES = Object.freeze(["entityType", "id", "creatorType", "creator", "created", "modified", "discontinued"] as const);
