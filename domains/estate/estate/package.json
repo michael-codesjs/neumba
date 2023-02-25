@@ -12,7 +12,8 @@
     "test:adapters": "jest source/adapters",
     "test:adapters:primary": "jest source/adapters/primary",
     "test:adapters:secondary": "jest source/adapters/secondary",
-    "test:repositories": "jest source/repositories"
+    "test:repositories": "jest source/repositories",
+    "test:use-cases": "jest source/use-cases"
   },
   "dependencies": {
     "@middy/core": "^3.4.0",

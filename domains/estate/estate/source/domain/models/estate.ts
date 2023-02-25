@@ -6,7 +6,7 @@ export type Estate = {
   creatorType: EntityType,
   creator: string,
   created: Date,
-  modified?: Date,
+  modified: Date,
   discontinued: boolean
   name: string
 };

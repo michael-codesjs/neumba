@@ -1,10 +1,10 @@
 import { EstateDynamoDbAdapter } from "../../adapters/secondary/estate";
-import { getRandomEstateAttributes } from "../../adapters/secondary/estate/__tests__/utilities";
+import { getRandomEstateAttributes } from "../../utilities/testing";
 import { Estate } from "../../domain/entities/estate";
 import { Estate as TEstate } from "../../domain/models";
 import { EstateRepository } from "../estate";
 
-jest.mock("../../../adapters/secondary/estate")
+jest.mock("../../../adapters/secondary/estate");
 
 describe("EstateRepository", () => {
 

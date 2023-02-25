@@ -21,7 +21,7 @@ export class Estate extends Entity {
   }
 
   public static fromDTO(params: TEstate) {
-    return new this(params);
+    return new Estate(params);
   }
 
 }

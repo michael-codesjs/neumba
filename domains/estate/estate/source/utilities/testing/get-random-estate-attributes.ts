@@ -1,7 +1,7 @@
 import Chance from "chance";
-import { EntityType } from "../../../../../../../../../shared/typescript/types";
-import { getRandomEntityType } from "../../../../../../../../../shared/typescript/utilities/functions/miscellanous";
-import { Estate } from "../../../../../domain/models";
+import { EntityType } from "../../../../../../shared/typescript/types";
+import { getRandomEntityType } from "../../../../../../shared/typescript/utilities/functions/miscellanous";
+import { Estate } from "../../domain/models";
 
 const chance = new Chance();
 
