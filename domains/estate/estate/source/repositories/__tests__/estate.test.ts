@@ -1,7 +1,7 @@
 import { EstateDynamoDbAdapter } from "../../adapters/secondary/estate/dynamoDb/adapter";
 import { getRandomEstateAttributes } from "../../utilities/testing";
 import { Estate } from "../../domain/entities/estate";
-import { Estate as TEstate } from "../../types";
+import { EstateDTO } from "../../types";
 import { EstateRepository } from "../estate";
 
 jest.mock("../../adapters/secondary/estate/dynamoDb/adapter");
@@ -25,8 +25,8 @@ describe("EstateRepository", () => {
     expect(mockedAdapterClass).toHaveBeenCalled(); // adapter to have been instanciated.
 
     // Arrange 
-    const dummyEstateAttributes: TEstate = getRandomEstateAttributes(); // generate random estate attributes.
-    const dummyEstateStore: Record<string, TEstate> = { [dummyEstateAttributes.id]: dummyEstateAttributes }; // create dummy estate entity store with previously generated dummy estate as a record.
+    const dummyEstateAttributes: EstateDTO = getRandomEstateAttributes(); // generate random estate attributes.
+    const dummyEstateStore: Record<string, EstateDTO> = { [dummyEstateAttributes.id]: dummyEstateAttributes }; // create dummy estate entity store with previously generated dummy estate as a record.
 
     const instanciatedAdapter: jest.Mocked<EstateDynamoDbAdapter> = jest.mocked(mockedAdapterClass.mock.instances[0]); // create mocked typed adapter
     instanciatedAdapter.get.mockImplementationOnce(async (id: string) => dummyEstateStore[id]); // mock adapter implementation to obtain entity attributes from dummy store.
@@ -46,11 +46,11 @@ describe("EstateRepository", () => {
     expect(mockedAdapterClass).toHaveBeenCalled(); // adapter to have been instanciated.
 
     // Arrange 
-    const dummyEstateStore: Record<string, TEstate> = {};
+    const dummyEstateStore: Record<string, EstateDTO> = {};
     const dummyEstate: Estate = Estate.fromDTO(getRandomEstateAttributes()); // create estate instance from random generated DTO.
 
     const instanciatedAdapter: jest.Mocked<EstateDynamoDbAdapter> = jest.mocked(mockedAdapterClass.mock.instances[0]); // create mocked typed adapter.
-    instanciatedAdapter.put.mockImplementationOnce(async (params: TEstate) => {
+    instanciatedAdapter.put.mockImplementationOnce(async (params: EstateDTO) => {
       dummyEstateStore[params.id] = params;
       return params;
     }); // mock adapter implementation to persist entity in dummy store.
@@ -62,7 +62,7 @@ describe("EstateRepository", () => {
     expect(instanciatedAdapter.put).toHaveBeenCalled(); // adapter.get to have been called.
     expect(response).toBeInstanceOf(Estate); // repository.get response to be instance of Estate.
 
-    const dto: TEstate = response.toDTO();
+    const dto: EstateDTO = response.toDTO();
     expect(dto).toStrictEqual(dummyEstateStore[dto.id]); // DTO to equal created dummy estate.
 
   });
@@ -72,11 +72,11 @@ describe("EstateRepository", () => {
     expect(mockedAdapterClass).toHaveBeenCalled(); // adapter to have been instanciated.
 
     // Arrange 
-    const dummyEstateAttributes: TEstate = getRandomEstateAttributes(); // generate random estate attributes.
-    const dummyEstateStore: Record<string, TEstate> = { [dummyEstateAttributes.id]: dummyEstateAttributes }; // create dummy estate entity store with previously generated dummy estate as a record.
+    const dummyEstateAttributes: EstateDTO = getRandomEstateAttributes(); // generate random estate attributes.
+    const dummyEstateStore: Record<string, EstateDTO> = { [dummyEstateAttributes.id]: dummyEstateAttributes }; // create dummy estate entity store with previously generated dummy estate as a record.
 
     const instanciatedAdapter: jest.Mocked<EstateDynamoDbAdapter> = jest.mocked(mockedAdapterClass.mock.instances[0]); // create mocked typed adapter.
-    instanciatedAdapter.update.mockImplementationOnce(async (params: Partial<TEstate>) => {
+    instanciatedAdapter.update.mockImplementationOnce(async (params: Partial<EstateDTO>) => {
       dummyEstateStore[params.id] = {
         ...dummyEstateStore[params.id],
         ...params
@@ -84,7 +84,7 @@ describe("EstateRepository", () => {
       return dummyEstateStore[params.id];
     }); // mock adapter implementation to obtain entity attributes from dummy store.
 
-    const updateParams: TEstate = {
+    const updateParams: EstateDTO = {
       ...getRandomEstateAttributes(),
       id: dummyEstateAttributes.id
     };

@@ -1,13 +1,13 @@
 import { Estate } from "../domain/entities/estate";
-import { CreateEstate, Estate as TEstate } from "../types";
 import { EstateRepository } from "../repositories/estate";
+import { CreateEstateParams, EstateDTO } from "../types";
 
-export const createEstate = async (dto: CreateEstate): Promise<TEstate> => {
+export const createEstate = async (params: CreateEstateParams): Promise<EstateDTO> => {
 
-  const estate = Estate.fromDTO(dto);
+  const { name, creator } = params;
+  const estate = Estate.create({ name, creator });
+
   const repository = new EstateRepository();
-
-  estate.checkPutability();
   const result = await repository.put(estate);
 
   return result.toDTO();

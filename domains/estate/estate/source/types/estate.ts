@@ -1,6 +1,6 @@
 import { EntityType } from "../../../../../shared/typescript/types";
 
-export type Estate = {
+export type EstateDTO = {
   entityType: EntityType.Estate,
   id: string,
   creatorType: EntityType,
@@ -11,7 +11,7 @@ export type Estate = {
   name: string
 };
 
-export type CreateEstate = {
+export type CreateEstateParams = {
   creator: string,
   name: string
 };

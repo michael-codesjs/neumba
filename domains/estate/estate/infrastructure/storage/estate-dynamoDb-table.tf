@@ -99,7 +99,7 @@ resource "aws_dynamodb_table" "estate_dynamoDb_table" {
 }
 
 resource "aws_ssm_parameter" "estate_table_name" {
-  name  = "/neumba/${var.stage}/service/estate/storage/table/estate/name"
+  name  = "/neumba/${var.stage}/service/estate/infrastructure/storage/table/estate/name"
   type  = "String"
   value = aws_dynamodb_table.estate_dynamoDb_table.name
 }

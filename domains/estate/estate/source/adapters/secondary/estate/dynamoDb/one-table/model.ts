@@ -1,9 +1,9 @@
 import { Model } from "dynamodb-onetable";
 import { table } from "./table";
 import { EntityType } from "../../../../../../../../../shared/typescript/types";
-import { Estate } from "../../../../../types";
+import { EstateDTO } from "../../../../../types";
 
-export const estate = new Model<Estate>(table, "Estate", {
+export const estate = new Model<EstateDTO>(table, "Estate", {
   fields: {
     // key fields
     PK: { type: String, value: 'ESTATE#${id}', hidden: true },
@@ -18,7 +18,7 @@ export const estate = new Model<Estate>(table, "Estate", {
     creatorType: { type: String, required: true },
     creator: { type: String, required: true },
     created: { type: Date, required: true },
-    modified: { type: Date, required: true },
+    modified: { type: Date },
     discontinued: { type: Boolean, required: true },
     name: { type: String, required: true },
     coordinates: { type: Object }

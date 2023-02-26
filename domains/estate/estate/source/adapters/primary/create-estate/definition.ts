@@ -13,6 +13,6 @@ export const definition: AWS.ServerlessLambdaFunction = {
 		},
   ],
   environment: {
-    ESTATE_DYNAMODB_TABLE: "${ssm:/neumba/${self:custom.stage}/service/estate/infrastructure/storage/table/estate/arn}"
+    ESTATE_DYNAMODB_TABLE_NAME: "${ssm:/neumba/${self:custom.stage}/service/estate/infrastructure/storage/table/estate/name}"
   }
 }

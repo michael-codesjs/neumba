@@ -1,5 +1,5 @@
 import { COMMON_ATTRIBUTES } from "../../../../../../../../../shared/typescript/utilities/constants";
-import { Estate } from "../../../../../types";
+import { EstateDTO } from "../../../../../types";
 import { EstateDynamoDbAdapter } from "../../dynamoDb";
 import { estate } from "../../dynamoDb/one-table/model";
 import { getRandomEstateAttributes } from "../../../../../utilities/testing";
@@ -21,7 +21,7 @@ describe("DynamoDbDatabaseAdapter", () => {
     const dummyEstate = getRandomEstateAttributes();
     const dummyEstateStore = { [dummyEstate.id]: dummyEstate };
 
-    mockedEstateModel.get.mockImplementationOnce(async (params: Partial<Estate>) => dummyEstateStore[params.id]);
+    mockedEstateModel.get.mockImplementationOnce(async (params: Partial<EstateDTO>) => dummyEstateStore[params.id]);
 
     // Act
     const item = await adapter.get(dummyEstate.id); // get estate item via adapter
@@ -40,10 +40,10 @@ describe("DynamoDbDatabaseAdapter", () => {
   test(".put", async () => {
 
     // Arrange
-    const dummyEstateStore: Record<string, Estate> = {};
+    const dummyEstateStore: Record<string, EstateDTO> = {};
     const dummyEstate = getRandomEstateAttributes();
 
-    mockedEstateModel.create.mockImplementationOnce(async (params: Estate) => {
+    mockedEstateModel.create.mockImplementationOnce(async (params: EstateDTO) => {
       dummyEstateStore[params.id] = params;
       return params;
     });
@@ -65,7 +65,7 @@ describe("DynamoDbDatabaseAdapter", () => {
     const dummyEstate = getRandomEstateAttributes();
     const dummyEstateStore = { [dummyEstate.id]: dummyEstate };
 
-    mockedEstateModel.update.mockImplementationOnce(async (params: Partial<Estate>) => {
+    mockedEstateModel.update.mockImplementationOnce(async (params: Partial<EstateDTO>) => {
       dummyEstateStore[params.id] = {
         ...dummyEstateStore[params.id],
         ...params

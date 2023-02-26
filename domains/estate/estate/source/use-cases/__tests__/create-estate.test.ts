@@ -1,6 +1,6 @@
 import { Estate } from "../../domain/entities/estate/entity";
 import { EstateRepository } from "../../repositories/estate";
-import { Estate as TEstate } from "../../types";
+import { CreateEstateParams, EstateDTO } from "../../types";
 import { getRandomEstateAttributes } from "../../utilities/testing";
 import { createEstate } from "../create-estate";
 
@@ -12,22 +12,22 @@ describe("Create Estate", () => {
   let mockedEstateClass: jest.MockedObjectDeep<typeof Estate> = jest.mocked(Estate);
   let mockedRepositoryClass: jest.MockedObjectDeep<typeof EstateRepository> = jest.mocked(EstateRepository);
 
-  mockedEstateClass.fromDTO.mockImplementation((attributes: TEstate) => new Estate(attributes));
+  mockedEstateClass.fromDTO.mockImplementation((attributes: EstateDTO) => new Estate(attributes));
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  it("returns right DTO", async () => {
+  it(".returns right DTO", async () => {
 
     // Arrange 
 
-    const dummyEstateAttributes: TEstate = getRandomEstateAttributes(); // generate random estate attributes.
-    
+    const dummyEstateAttributes: EstateDTO = getRandomEstateAttributes(); // generate random estate attributes.
+
     // mock implementations
-    mockedEstateClass.prototype.checkPutability.mockImplementationOnce(() => { });
-    mockedEstateClass.prototype.toDTO.mockImplementationOnce(() => dummyEstateAttributes);
+    mockedEstateClass.create.mockImplementationOnce((attributes: CreateEstateParams) => new Estate(attributes));
     mockedRepositoryClass.prototype.put.mockImplementationOnce(async () => Estate.fromDTO(dummyEstateAttributes));
+    mockedEstateClass.prototype.toDTO.mockImplementationOnce(() => dummyEstateAttributes);
 
     // Act
 
@@ -35,10 +35,9 @@ describe("Create Estate", () => {
 
     // Assert
 
-    const instanciatedEstate = mockedEstateClass.mock.instances[0];
     const instanciatedRepository = mockedRepositoryClass.mock.instances[0];
 
-    expect(instanciatedEstate.checkPutability).toHaveBeenCalled();
+    expect(mockedEstateClass.create).toHaveBeenCalled();
     expect(instanciatedRepository.put).toHaveBeenCalled();
     expect(response).toStrictEqual(dummyEstateAttributes);
 

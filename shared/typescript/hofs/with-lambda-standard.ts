@@ -6,7 +6,7 @@ import { Handler } from "aws-lambda";
 export const withLambdaStandard = <E, R>(handler: Handler<E, R>) => {
 	return (
 		middy(handler)
-			.use(httpJSONBodyParser())
+			// .use(httpJSONBodyParser())
 			.use(inputOutputLogger())
 	);
 };

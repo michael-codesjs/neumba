@@ -5,6 +5,7 @@ schema {
 
 enum EntityType {
   ESTATE
+  USER
 }
 
 interface Common {

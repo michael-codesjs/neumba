@@ -38,6 +38,7 @@ export type Common = {
 
 export enum EntityType {
   ESTATE = "ESTATE",
+  USER = "USER",
 }
 
 

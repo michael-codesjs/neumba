@@ -48,7 +48,8 @@ export type CreateEstateInput = {
 };
 
 export enum EntityType {
-  Estate = 'ESTATE'
+  Estate = 'ESTATE',
+  User = 'USER'
 }
 
 export type Estate = Common & {

@@ -13,7 +13,10 @@ const ssmClient = new SSMClient({ region: process.env.AWS_REGION || "eu-central-
 
 /** POJO of envioment variables and their respective SSM parameter paths. */
 const VARIABLES = Object.freeze({
-  ESTATE_DYANMODB_TABLE_NAME: "/neumba/dev/service/estate/storage/table/estate/name",
+  ESTATE_DYNAMODB_TABLE_NAME: "/neumba/dev/service/estate/infrastructure/storage/table/estate/name",
+  COGNITO_USER_POOL_ID: "/neumba/dev/infrastructure/authentication/user-pool/id",
+  COGNITO_CLIENT_ID: "/neumba/dev/infrastructure/authentication/user-pool/client/web/id",
+  GRAPHQL_API_ENDPOINT: "/neumba/dev/infrastructure/api/graphql/endpoint"
 });
 
 (async () => {
@@ -25,7 +28,7 @@ const VARIABLES = Object.freeze({
 
     const [variable, name] = entries[x];
 
-    const spinner = ora(`Retrieving ${chalk.bold(variable)} value from SSM path ${chalk.blueBright(name)}.`);
+    const spinner = ora(`Retrieving ${chalk.bold(variable)} value from SSM path ${chalk.blueBright.bold(name)}`);
     spinner.start();
 
     try {
@@ -37,22 +40,19 @@ const VARIABLES = Object.freeze({
 
       const value = await ssmClient.send(getParameterCommand);
 
-      envString += `${variable}=${value.Parameter.Value}\n`;
+      envString += `${variable}=${value.Parameter.Value}${x !== entries.length - 1 ? "\n" : ""}`;
 
-      spinner.succeed(`Retrieved ${chalk.bold(variable)} value from SSM path ${chalk.blueBright(name)}.`);
+      spinner.succeed(`Retrieved ${chalk.bold(variable)} value from SSM path ${chalk.blueBright.bold(name)}`);
 
     } catch (error) {
 
-      console.log("E:", error);
-
-      spinner.fail(`Failed to retrieve ${chalk.bold(variable)} value from SSM path ${chalk.blueBright(name)}.`);
+      spinner.fail(`Failed to retrieve ${chalk.bold(variable)} value from SSM path ${chalk.blueBright(name)}`);
 
     }
 
-    writeFileSync(join(__dirname, "../.env"), envString, { encoding: "utf-8" }); // export .env to ../
-
-    console.log(chalk.bold("\n The .env file has been exported to the root folder of the sub-domain\n"));
-
   }
+
+  writeFileSync(join(__dirname, "../.env"), envString, { encoding: "utf-8" }); // export .env to ../
+  console.log(chalk.bold("\n The .env file has been exported to the root folder of the estate sub-domain\n"));
 
 })();

@@ -4,7 +4,7 @@ import { Dynamo } from 'dynamodb-onetable/Dynamo';
 import { configureEnviromentVariables } from "../../../../../../../../../shared/typescript/utilities/functions/miscellanous";
 
 const {
-  ESTATE_DYANMODB_TABLE_NAME,
+  ESTATE_DYNAMODB_TABLE_NAME,
   REGION
 } = configureEnviromentVariables();
 
@@ -15,7 +15,7 @@ const client = new Dynamo({
 });
 
 export const table = new Table({
-  name: ESTATE_DYANMODB_TABLE_NAME,
+  name: ESTATE_DYNAMODB_TABLE_NAME,
   client,
   schema: {
     format: 'onetable:1.1.0',

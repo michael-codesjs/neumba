@@ -1,6 +1,6 @@
 import { Attributes as AbstractAttribtues } from "../../../../../../../shared/typescript/abstracts";
 import { CommonAttributes, EntriesFromAttributesSchema, ToAttributeParams } from "../../../../../../../shared/typescript/abstracts/types";
-import { EntityType } from "../../../../../../../shared/typescript/types";
+import { EntityType } from "../../../../../../../shared/typescript/types/api";
 import { AttributesSchema } from "./types";
 
 /**
@@ -11,10 +11,10 @@ export class Attributes extends AbstractAttribtues<AttributesSchema> {
 	static CreatorTypes = [];
 	private static readonly config: ToAttributeParams<Omit<AttributesSchema, keyof Omit<CommonAttributes, "creatorType" | "entityType">>> = {
 		creatorType: {
-			initial: "USER" as EntityType,
+			initial: EntityType.User,
 			required: true,
 			validate(value) {
-				return !!value; // UserAttributes.CreatorTypes.includes(value), TODO: implement validation.
+				return value === EntityType.User; // UserAttributes.CreatorTypes.includes(value), TODO: implement validation.
 			},
 		},
 		entityType: {
@@ -34,7 +34,8 @@ export class Attributes extends AbstractAttribtues<AttributesSchema> {
 	parse(attributes: Partial<EntriesFromAttributesSchema<AttributesSchema>>): void {
 		super.parse({
 			...attributes,
-			entityType: EntityType.Estate
+			entityType: EntityType.Estate,
+			creatorType: EntityType.User
 		});
 	}
 

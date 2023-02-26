@@ -33,19 +33,19 @@ resource "aws_cognito_user_pool" "user_pool" {
 
 resource "aws_ssm_parameter" "userPoolName" {
   name  = "/neumba/${var.stage}/infrastructure/authentication/user-pool/name"
-  type  = "String"
+  type  = "SecureString"
   value = aws_cognito_user_pool.user_pool.name
 }
 
 resource "aws_ssm_parameter" "userPoolId" {
   name  = "/neumba/${var.stage}/infrastructure/authentication/user-pool/id"
-  type  = "String"
+  type  = "SecureString"
   value = aws_cognito_user_pool.user_pool.id
 }
 
 resource "aws_ssm_parameter" "userPoolARN" {
   name  = "/neumba/${var.stage}/infrastructure/authentication/user-pool/arn"
-  type  = "String"
+  type  = "SecureString"
   value = aws_cognito_user_pool.user_pool.arn
 }
 
