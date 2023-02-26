@@ -1,7 +1,7 @@
 import { Model } from "dynamodb-onetable";
 import { table } from "./table";
 import { EntityType } from "../../../../../../../../../shared/typescript/types";
-import { Estate } from "../../../../../domain/models";
+import { Estate } from "../../../../../types";
 
 export const estate = new Model<Estate>(table, "Estate", {
   fields: {

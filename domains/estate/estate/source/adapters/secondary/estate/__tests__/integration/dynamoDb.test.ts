@@ -1,6 +1,6 @@
 import { EstateDynamoDbAdapter } from "../../dynamoDb";
 import { estate } from "../../dynamoDb/one-table/model";
-import { getRandomEstateAttributes } from "../utilities";
+import { getRandomEstateAttributes } from "../../../../../utilities/testing";
 
 describe("DynamoDbDatabaseAdpater", () => {
 

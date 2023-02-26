@@ -9,7 +9,6 @@ export const providerSettings = Object.freeze({
 
 export const plugins = Object.freeze([
   "serverless-esbuild",
-  "serverless-export-env",
   "serverless-iam-roles-per-function",
 ] as const);
 

@@ -1321,6 +1321,30 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
+"@middy/core@^4.2.6":
+  version "4.2.6"
+  resolved "https://registry.yarnpkg.com/@middy/core/-/core-4.2.6.tgz#38c8b5dec6df7f03a0b1826bbd6205d8c833aeb0"
+  integrity sha512-F2jMyB1+KB2trbfukcJB5qbAW4eyj5jNW+oJrLmh2DOhNI0XnDIQwrn8pWueiCWU5xEvkMUXjgJLCToFL0uTQg==
+
+"@middy/http-json-body-parser@^4.2.6":
+  version "4.2.6"
+  resolved "https://registry.yarnpkg.com/@middy/http-json-body-parser/-/http-json-body-parser-4.2.6.tgz#55320adda108b9af214bde09877d3124daf3dc2a"
+  integrity sha512-kV19s9iedl6MI+FpVbkQr40s+WmOmagivf7loz6j3a9r0td8TXCNa7ZlfDtXu2D+LW5U03CnzV0/FDL2PFoZ/g==
+  dependencies:
+    "@middy/util" "4.2.6"
+
+"@middy/input-output-logger@^4.2.6":
+  version "4.2.6"
+  resolved "https://registry.yarnpkg.com/@middy/input-output-logger/-/input-output-logger-4.2.6.tgz#0d29d62adaa3c26ee14b693667e7469b8a2b8806"
+  integrity sha512-e8lw/vHk3P7GETd0TNE9eBHC8gmPfdsAuAfhnjO+krFpAxSOKpmKZ3dQoBqF0y3Uq14oDGm8GzwGx9ATFOs2/A==
+  dependencies:
+    "@middy/util" "4.2.6"
+
+"@middy/util@4.2.6":
+  version "4.2.6"
+  resolved "https://registry.yarnpkg.com/@middy/util/-/util-4.2.6.tgz#c20d486c3ea3c32943a49ec09f5e86830fab5bbe"
+  integrity sha512-TxsWUBYxwBNeFO/AK0Ouk3ESqXYMWkeasRNs7kM/wDcz4pPnqEy4SyF9CQsRsrDv0irKsVgxKYpVms5SabSUvg==
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
@@ -1422,6 +1446,11 @@
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@tsconfig/node16/-/node16-1.0.3.tgz#472eaab5f15c1ffdd7f8628bd4c4f753995ec79e"
   integrity sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==
+
+"@types/aws-lambda@^8.10.111":
+  version "8.10.111"
+  resolved "https://registry.yarnpkg.com/@types/aws-lambda/-/aws-lambda-8.10.111.tgz#9107c405f3011a5c423b5ac93fbf279439558571"
+  integrity sha512-8HR9UjIKmoemEzE2BviVtFkeenxfbizSu8raFjnT2VXxguZZ2JTlNww7INOH7IA0J/zRa3TjOftkYq6hVNkxDA==
 
 "@types/babel__core@^7.1.14":
   version "7.20.0"

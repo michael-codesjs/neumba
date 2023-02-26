@@ -9,6 +9,7 @@
   "private": true,
   "scripts": {
     "generate-env": "ts-node scripts/generate-env.ts",
+    "test": "jest --silent",
     "test:adapters": "jest source/adapters",
     "test:adapters:primary": "jest source/adapters/primary",
     "test:adapters:secondary": "jest source/adapters/secondary",
@@ -22,8 +23,7 @@
     "correlation-id": "^5.0.0",
     "dotenv": "^16.0.3",
     "dynamodb-onetable": "^2.6.1",
-    "ulid": "^2.3.0",
-    "yup": "^0.32.11"
+    "ulid": "^2.3.0"
   },
   "devDependencies": {
     "@aws-sdk/client-dynamodb": "^3.278.0",
@@ -40,6 +40,7 @@
     "serverless": "^3.0.0",
     "serverless-appsync-plugin": "^1.14.0",
     "serverless-esbuild": "^1.23.3",
+    "serverless-iam-roles-per-function": "^3.2.0",
     "serverless-step-functions": "^3.11.1",
     "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",

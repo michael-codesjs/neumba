@@ -20,7 +20,7 @@ export class Estate extends Entity {
     return this.attributes.collective();
   }
 
-  public static fromDTO(params: TEstate) {
+  public static fromDTO(params: { name: string }) {
     return new Estate(params);
   }
 

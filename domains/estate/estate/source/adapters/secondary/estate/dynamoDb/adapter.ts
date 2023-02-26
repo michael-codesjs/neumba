@@ -1,5 +1,5 @@
 
-import { Estate } from "../../../../domain/models";
+import { Estate } from "../../../../types";
 import { EstateDatabaseAdapter } from "../../../../interfaces/adapters";
 import { estate } from "./one-table";
 

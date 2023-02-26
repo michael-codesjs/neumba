@@ -3,5 +3,5 @@ export const config = {
   provider: "aws" as const,
   region: "eu-central-1" as const,
   stage:  "dev" as const,
-  runtime: "nodejs16.x" as const,
+  runtime: "nodejs18.x" as const,
 }

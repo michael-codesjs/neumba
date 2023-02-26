@@ -1,6 +1,6 @@
 import { Estate } from "../../domain/entities/estate/entity";
 import { EstateRepository } from "../../repositories/estate";
-import { Estate as TEstate } from "../../domain/models";
+import { Estate as TEstate } from "../../types";
 import { getRandomEstateAttributes } from "../../utilities/testing";
 import { createEstate } from "../create-estate";
 

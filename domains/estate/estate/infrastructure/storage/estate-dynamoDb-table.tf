@@ -105,13 +105,13 @@ resource "aws_ssm_parameter" "estate_table_name" {
 }
 
 resource "aws_ssm_parameter" "estate_table_arn" {
-  name  = "/neumba/${var.stage}/service/estate/storage/table/estate/arn"
+  name  = "/neumba/${var.stage}/service/estate/infrastructure/storage/table/estate/arn"
   type  = "String"
   value = aws_dynamodb_table.estate_dynamoDb_table.arn
 }
 
 resource "aws_ssm_parameter" "estate_table_stream_arn" {
-  name  = "/neumba/${var.stage}/service/estate/storage/table/estate/stream/arn"
+  name  = "/neumba/${var.stage}/service/estate/infrastructure/storage/table/estate/stream/arn"
   type  = "String"
   value = aws_dynamodb_table.estate_dynamoDb_table.stream_arn
 }

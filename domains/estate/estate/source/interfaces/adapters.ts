@@ -1,4 +1,4 @@
-import { Estate } from "../domain/models";
+import { Estate } from "../types";
 
 export interface EstateDatabaseAdapter {
   get(id: string): Promise<Estate>,

@@ -1,8 +1,8 @@
 import { COMMON_ATTRIBUTES } from "../../../../../../../../../shared/typescript/utilities/constants";
-import { Estate } from "../../../../../domain/models";
+import { Estate } from "../../../../../types";
 import { EstateDynamoDbAdapter } from "../../dynamoDb";
 import { estate } from "../../dynamoDb/one-table/model";
-import { getRandomEstateAttributes } from "../utilities";
+import { getRandomEstateAttributes } from "../../../../../utilities/testing";
 
 jest.mock("../../dynamoDb/one-table/model");
 

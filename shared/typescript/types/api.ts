@@ -31,12 +31,29 @@ export type Common = {
   modified?: Maybe<Scalars['AWSDateTime']>;
 };
 
+export type Coordinates = {
+  __typename?: 'Coordinates';
+  x: Scalars['String'];
+  y: Scalars['String'];
+};
+
+export type CoordinatesInput = {
+  x: Scalars['String'];
+  y: Scalars['String'];
+};
+
+export type CreateEstateInput = {
+  coorindates?: InputMaybe<CoordinatesInput>;
+  name: Scalars['String'];
+};
+
 export enum EntityType {
   Estate = 'ESTATE'
 }
 
 export type Estate = Common & {
   __typename?: 'Estate';
+  coorindates?: Maybe<Coordinates>;
   created: Scalars['AWSDateTime'];
   creator: Scalars['ID'];
   creatorType: EntityType;
@@ -45,4 +62,24 @@ export type Estate = Common & {
   id: Scalars['ID'];
   modified?: Maybe<Scalars['AWSDateTime']>;
   name: Scalars['String'];
+};
+
+export type Mutation = {
+  __typename?: 'Mutation';
+  createEstate: Estate;
+};
+
+
+export type MutationCreateEstateArgs = {
+  input: CreateEstateInput;
+};
+
+export type Query = {
+  __typename?: 'Query';
+  getEstate: Estate;
+};
+
+
+export type QueryGetEstateArgs = {
+  id: Scalars['String'];
 };

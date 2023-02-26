@@ -1,8 +1,9 @@
-import { AWS } from "../../../shared/typescript/types"
-import { generate } from "../../../shared/typescript/utilities/functions";
+import { AWS } from "../../../shared/typescript/types";
 import * as common from "../../../shared/typescript/utilities/constants/common";
 import * as commonPluginConfig from "../../../shared/typescript/utilities/constants/config";
-import { resource } from "../../../shared/typescript/utilities/constants";
+import { generate } from "../../../shared/typescript/utilities/functions";
+import { createEstate } from "./source/adapters/primary";
+import { createLambdaDataSource, createMappingTemplate } from "../../../shared/typescript/utilities/functions/appsync";
 
 const serverlessConfiguration: AWS.Service = {
   
@@ -11,25 +12,40 @@ const serverlessConfiguration: AWS.Service = {
 
   provider: {
     ...common.providerSettings,
+    
   },
+
+  plugins: [
+    ...common.plugins,
+    "serverless-appsync-plugin"
+  ],
 
   custom: {
     ...commonPluginConfig,
     ...common.commonCustom,
     appSync: {
-			apiId: resource.api.graphQlApiId,
-			schema: "../../shared/graphql/schema.graphql",
+			apiId: "${ssm:/neumba/${self:custom.stage}/infrastructure/api/graphql/id}",
+			schema: "../../../shared/graphql/schema.graphql",
 			mappingTemplates: [
+        createMappingTemplate({
+					field: "createEstate",
+					type: "Mutation",
+					source: "createEstate"
+				}),
 			],
 			dataSources: [
+        createLambdaDataSource("createEstate")
 			]
 		},
   },
 
   package: {
-    individually: true,
-    excludeDevDependencies: true
+    individually: true
   },
+
+  functions: {
+    createEstate
+  }
 
 };
 
