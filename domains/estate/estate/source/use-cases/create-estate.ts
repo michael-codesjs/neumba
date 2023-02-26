@@ -4,8 +4,6 @@ import { EstateRepository } from "../repositories/estate";
 
 export const createEstate = async (dto: CreateEstate): Promise<TEstate> => {
 
-  dto.creatorType = "USER";
-
   const estate = Estate.fromDTO(dto);
   const repository = new EstateRepository();
 

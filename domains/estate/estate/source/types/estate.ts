@@ -12,7 +12,6 @@ export type Estate = {
 };
 
 export type CreateEstate = {
-  creatorType?: EntityType | "USER",
   creator: string,
   name: string
 };

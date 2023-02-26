@@ -11,7 +11,7 @@ export class Attributes extends AbstractAttribtues<AttributesSchema> {
 	static CreatorTypes = [];
 	private static readonly config: ToAttributeParams<Omit<AttributesSchema, keyof Omit<CommonAttributes, "creatorType" | "entityType">>> = {
 		creatorType: {
-			initial: null,
+			initial: "USER" as EntityType,
 			required: true,
 			validate(value) {
 				return !!value; // UserAttributes.CreatorTypes.includes(value), TODO: implement validation.
