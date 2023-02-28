@@ -1,4 +1,5 @@
 import { AttributeParams, AttributeSchema, CommonAttributes } from ".";
+import { ChangeTypeOfKeys, WithPartial } from "../../types";
 import { Attribute } from "../attribute";
 
 export type ToAttributeRecord<T extends Record<string, AttributeSchema<any, boolean>>> = {
@@ -11,8 +12,10 @@ export type ToAttributeParams<T extends Record<string, AttributeSchema<any, bool
   }
 };
 
-/** removes keys of ICommon from T*/
-export type RefinedToAttributeParams<T extends Record<string, any>> = Omit<ToAttributeParams<T>, keyof CommonAttributes>;
+/** Makes ICommon attribute optional. */
+export type AttributesConstructorParams<T extends Record<string, AttributeSchema<any, boolean>>> = (
+  WithPartial<ToAttributeRecord<T>, keyof CommonAttributes>
+);
 
 export type EntriesFromAttributesSchema<T extends Record<string, AttributeSchema<any, boolean>>> = {
   [Key in keyof T]: T[Key]["type"]

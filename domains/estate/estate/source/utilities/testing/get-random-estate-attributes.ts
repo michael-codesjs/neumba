@@ -6,6 +6,10 @@ const chance = new Chance();
 
 export const getRandomEstateInput = (): CreateEstateParams => ({
   name: chance.address(),
+  coordinates: {
+    x: chance.integer().toString(),
+    y: chance.integer().toString()
+  },
   creator: chance.guid()
 });
 

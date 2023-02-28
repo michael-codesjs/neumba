@@ -18,10 +18,8 @@ describe("Attributes", () => {
 
 		const randomAttributes = randomAttributeKeys.reduce((cumulative, current) => ({
 			...cumulative,
-			[current]: {
-				initial: chance.string()
-			}
-		}), {} as Record<string, { initial: string }>); // construct POJO of type RefinedToAttributeParams<T> to be passed to new Attributes()
+			[current]: new Attribute({ required: false, value: current, immutable: false })
+		}), {} as Record<string, Attribute<string, boolean>>); // construct POJO of type RefinedToAttributeParams<T> to be passed to new Attributes()
 
 		return randomAttributes;
 
@@ -78,7 +76,6 @@ describe("Attributes", () => {
 
 		expect(Object.keys(instanciatedAttributes))
 			.toEqual(expect.arrayContaining(Object.keys(randomAttributes)));
-
 
 	});
 

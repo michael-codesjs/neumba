@@ -6,6 +6,10 @@ export type ChangeTypeOfKeys<T extends object, Keys extends keyof T, NewType> = 
   [key in keyof T]: key extends Keys ? NewType : T[key]
 };
 
+export type WithPartial<T, K extends keyof T> = (
+  { [P in K]?: T[P] } & Omit<T, K>
+);
+
 export type Enumerate<N extends number, A extends number[] = []> = A["length"] extends N ? A[number] : Enumerate<N, [...A, A["length"]]>;
 
 export type IntRange<F extends number, T extends number> = Exclude<Enumerate<T>, Enumerate<F>>;

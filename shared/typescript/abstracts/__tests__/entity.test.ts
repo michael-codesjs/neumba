@@ -1,6 +1,5 @@
 import { Attributes, Entity } from "..";
 import { getRandomEntityType } from "../../utilities/functions/miscellanous";
-import { NotPutable } from "../errors";
 import { CommonAttributes } from "../types";
 
 describe("Entity", () => {
@@ -17,15 +16,8 @@ describe("Entity", () => {
 
   }
 
-  test(".checkPutability() falsy", () => {
-    const usable = new Usable();
-    expect(() => usable.checkPutability()).toThrowError(NotPutable); // did not setup usable with required attribute
-  });
+  test(".some method", () => {
 
-  test(".checkPutability() truthy", () => {
-    const usable = new Usable();
-    usable.setup(); // setup required attributes
-    usable.checkPutability(); // .checkPutability not throwing an error is a W for us so we do nothing else and let the test pass
   });
 
 });

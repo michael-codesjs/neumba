@@ -3,19 +3,19 @@ import { getEntityTypes } from "../utilities/functions/miscellanous";
 import { Attribute } from "./attribute";
 import { MutateImmutable } from "./errors";
 import { Publisher } from "./publisher";
-import { EntriesFromAttributesSchema, GetSetMutableAttributes, RefinedToAttributeParams, ToAttributeRecord } from "./types";
+import { EntriesFromAttributesSchema, GetSetMutableAttributes, AttributesConstructorParams, ToAttributeRecord } from "./types";
 import { AttributeSchema, CommonAttributes } from "./types/attributes";
 
 type CommonAttributesPlusOthers = CommonAttributes & Record<string, AttributeSchema<any, boolean>>;
 
 export class Attributes<T extends CommonAttributesPlusOthers> extends Publisher {
+	
+	readonly Attributes: ToAttributeRecord<T> = {} as typeof this.Attributes; // safe to cast, will populate in constructor
 
-	private Attributes: ToAttributeRecord<T> = {} as typeof this.Attributes; // safe to cast, will populate in constructor
-
-	constructor(params: RefinedToAttributeParams<T> = {} as any) {
-		super(); // publisher
-		this.defineT(params);
+	constructor(params: AttributesConstructorParams<T> = {} as any) {
+		super(); // Publisher
 		this.defineICommon();
+		this.defineT(params);
 	}
 
 	/** Instaciates common attributes -> new Attributes */
@@ -68,16 +68,15 @@ export class Attributes<T extends CommonAttributesPlusOthers> extends Publisher 
 
 	}
 
-	/** Instaciates generic attributes -> new Attribute*/
+	/** Places T attributes in the attributes collection. */
 	private defineT(params: ConstructorParameters<typeof Attributes>[0]) {
 		Object.entries(params).forEach(([key, value]) => {
-			const { initial, ...rest } = value;
-			this.Attributes[key as keyof typeof this.Attributes] = new Attribute({ ...rest, value: initial });
+			if(!(value instanceof Attribute)) throw new Error("Member of attributes collection is not of type 'Attribute'.");
+			this.Attributes[key as keyof typeof this.Attributes] = value;
 		});
 	}
 
 	/** set values of attributes including immutable values. */
-	// not advisable to be used in higher level code(eg: lambda functions)
 	parse(attributes: Partial<EntriesFromAttributesSchema<T>>) {
 
 		const { entityType, discontinued, created, id, creator, modified, creatorType, ...rest } = attributes;

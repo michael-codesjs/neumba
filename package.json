@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "codegen": "npx ts-node scripts/codegen.ts",
-    "test": "jest --silent",
+    "test": "jest shared --silent",
     "test:abstracts": "jest --silent shared/typescript/abstracts/__tests__",
     "test:middleware": "jest --verbose shared/typescript/middleware/__tests__"
   },

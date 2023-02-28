@@ -1,6 +1,7 @@
 import { Attributes } from "./attributes";
 import { NotPutable } from "./errors";
 import { CommonAttributes } from "./types";
+import { ValueObject } from "./value-object";
 
 /**
  * Base abstract class to be extends by most if not all of our domain entities.
@@ -9,15 +10,9 @@ import { CommonAttributes } from "./types";
 
 export abstract class Entity {
 
-  protected abstract readonly attributes: Attributes<CommonAttributes>;
+  protected abstract readonly attributes: Attributes<CommonAttributes> | ValueObject<any, boolean>;
 
   constructor({ }: {} = {}) { } // {}: {} = {} is for constructor signature purposes only
   /*eslint no-empty-pattern: "off"*/
-
-  /** checks if an entity has all of it's required attributes for persistence. */
-  checkPutability(): void {
-    const isPutable = this.attributes.isPutable();
-    if(!isPutable) throw new NotPutable();
-  }
 
 }
