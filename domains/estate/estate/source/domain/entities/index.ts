@@ -1,1 +1,0 @@
-export { Estate } from "./estate";
