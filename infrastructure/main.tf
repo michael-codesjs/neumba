@@ -35,3 +35,9 @@ module "api" {
   region               = var.region
   cognito_user_pool_id = module.authentication.cognito_user_pool_id
 }
+
+module "domain-io" {
+  source = "./domain-io"
+  stage  = var.stage
+  region = var.region
+}
