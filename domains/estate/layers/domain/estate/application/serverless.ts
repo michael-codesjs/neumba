@@ -8,10 +8,17 @@ const serverlessConfiguration: AWS.Service = {
   frameworkVersion: "3",
 
   provider: {
+    
     name: "aws",
     region: "eu-central-1",
     stage: "dev",
-    runtime: "nodejs18.x"
+    runtime: "nodejs18.x",
+
+    apiGateway: {
+			restApiId: "${ssm:/estate/${self:custom.stage}/domain/estate/infrastructure/api/id}",
+			restApiRootResourceId: "${ssm:/estate/${self:custom.stage}/domain/estate/infrastructure/api/root-resource-id}"
+		}
+
   },
 
   package: {
@@ -37,8 +44,10 @@ const serverlessConfiguration: AWS.Service = {
       define: { "require.resolve": undefined },
       platform: "node",
       concurrency: 1
-    },
+    }
+    
   },
+
   functions: {
     createEstate
   }

@@ -1,9 +1,9 @@
 import { Context } from "aws-lambda";
-import { createEstate as createEstateUseCase } from "../../../use-cases";
-import { getRandomEstateAttributes } from "../../../utilities/testing";
-import { handler as createEstateHandler } from "../create-estate/handler";
+import { createEstate as createEstateUseCase } from "../../../../use-cases";
+import { getRandomEstateAttributes } from "../../../../utilities/testing";
+import { handler as createEstateHandler } from "../../create-estate/handler";
 
-jest.mock("../../../use-cases");
+jest.mock("../../../../use-cases");
 
 describe("Create Estate", () => {
 

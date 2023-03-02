@@ -9,9 +9,3 @@ variable "region" {
   default = "eu-central-1"
   description = "Region the estate domain service io infrastructure is created in."
 }
-
-module "event-bus" {
-  source = "./event-bus"
-  region = var.region
-  stage  = var.stage
-}

@@ -2,6 +2,11 @@ resource "aws_api_gateway_rest_api" "estate_domain_api" {
 
   name        = "nuemba-estate-domain"
   description = "REST API for synchronous communication with the estate domain."
+  # body        = file("${path.module}/../../schemas/openapi.json")
+
+  endpoint_configuration {
+    types = ["REGIONAL"]
+  }
 
   tags = {
     Application = "neumba"
@@ -51,31 +56,31 @@ resource "aws_api_gateway_deployment" "estate_domain_api_deployment" {
 }
 
 resource "aws_ssm_parameter" "estate_domain_api_id" {
-  name  = "/estate/${var.stage}/infrastructure/domain-io/estate/api/id"
+  name  = "/estate/${var.stage}/domain/estate/infrastructure/api/id"
   type  = "SecureString"
   value = aws_api_gateway_rest_api.estate_domain_api.id
 }
 
 resource "aws_ssm_parameter" "estate_domain_api_root_resource_id" {
-  name  = "/estate/${var.stage}/infrastructure/domain-io/estate/root-resource-id"
+  name  = "/estate/${var.stage}/domain/estate/infrastructure/api/root-resource-id"
   type  = "SecureString"
   value = aws_api_gateway_rest_api.estate_domain_api.root_resource_id
 }
 
 resource "aws_ssm_parameter" "estate_domain_api_arn" {
-  name  = "/estate/${var.stage}/infrastructure/domain-io/estate/api/arn"
+  name  = "/estate/${var.stage}/domain/estate/infrastructure/api/arn"
   type  = "SecureString"
   value = aws_api_gateway_rest_api.estate_domain_api.arn
 }
 
 resource "aws_ssm_parameter" "estate_domain_api_execution_arn" {
-  name  = "/estate/${var.stage}/infrastructure/domain-io/estate/api/api_execution_arn"
+  name  = "/estate/${var.stage}/domain/estate/infrastructure/api/api_execution_arn"
   type  = "SecureString"
   value = aws_api_gateway_rest_api.estate_domain_api.execution_arn
 }
 
 resource "aws_ssm_parameter" "estate_domain_api_url" {
-  name  = "/estate/${var.stage}/infrastructure/domain-io/estate/api/url"
+  name  = "/estate/${var.stage}/domain/estate/infrastructure/api/url"
   type  = "SecureString"
   value = aws_api_gateway_deployment.estate_domain_api_deployment.invoke_url
 }

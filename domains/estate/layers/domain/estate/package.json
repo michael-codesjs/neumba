@@ -12,6 +12,8 @@
     "test": "jest --silent",
     "test:adapters": "jest application/adapters",
     "test:adapters:primary": "jest application/adapters/primary",
+    "test:adapters:primary:unit": "jest application/adapters/primary/__tests__/unit",
+    "test:adapters:primary:integration": "jest application/adapters/primary/__tests__/integration",
     "test:adapters:secondary": "jest applicationadapters/secondary",
     "test:repositories": "jest application/repositories",
     "test:use-cases": "jest applicationuse-cases"
@@ -33,7 +35,6 @@
     "@types/aws-lambda": "^8.10.71",
     "@types/node": "^14.14.25",
     "@types/ora": "^3.2.0",
-    "aws-amplify": "4.3.30",
     "chalk": "2",
     "esbuild": "^0.14.11",
     "jest": "^29.3.1",

@@ -1,4 +1,5 @@
-import { AppSyncResolverEvent, SNSEvent, SQSEvent, APIGatewayProxyEvent, EventBridgeEvent } from "aws-lambda";
+import { AppSyncResolverEvent, SNSEvent, SQSEvent, APIGatewayProxyEvent, EventBridgeEvent, Context } from "aws-lambda";
+import middy from "@middy/core";
 import { CommonInputSources, Consumer, StateMachineEvent } from "./types";
 import { apiGatewayConsumer, eventBridgeConsumer, stateMachineConsumer, sqsConsumer, appsyncConsumer } from "./consumers";
 
@@ -11,8 +12,10 @@ class ConsumerFactory {
     return "Records" in event && Boolean(event.Records);
   }
 
-  private isApiGatewayEvent(event: CommonInputSources<any, any>): event is APIGatewayProxyEvent {
-    return ["body", "headers", "httpMethod", "path"].every(key => key in event);
+  private isApiGatewayEvent<I, R>(request: middy.Request<CommonInputSources<I, R>, R, Error, Context>): request is middy.Request<APIGatewayProxyEvent> {
+    const isApiGwEvent = ["body", "headers", "httpMethod", "path"].every(key => key in request.event);
+    request.internal.isApiGwEvent = isApiGwEvent;
+    return isApiGwEvent;
   }
 
   private isSQSEvent(event: CommonInputSources<any, any>): event is SQSEvent {
@@ -35,15 +38,15 @@ class ConsumerFactory {
     return ["detail-type", "detail"].every(key => key in event);
   }
 
-  createConsumer(event: CommonInputSources<any, any>): Consumer {
+  createConsumer<I, R>(request: middy.Request<CommonInputSources<I, R>, R, Error, Context>): Consumer {
     
     let consumer: Consumer;
     
-    if (this.isEventBridgeEvent(event)) consumer = eventBridgeConsumer;
-    else if(this.isAppSyncEvent(event)) consumer = appsyncConsumer;
-    else if (this.isApiGatewayEvent(event)) consumer = apiGatewayConsumer;
-    else if (this.isStateMachineEvent(event)) consumer = stateMachineConsumer;
-    else if(this.isSQSEvent(event)) consumer = sqsConsumer;
+    if (this.isEventBridgeEvent(request.event)) consumer = eventBridgeConsumer;
+    else if(this.isAppSyncEvent(request.event)) consumer = appsyncConsumer;
+    else if (this.isApiGatewayEvent(request)) consumer = apiGatewayConsumer;
+    else if (this.isStateMachineEvent(request.event)) consumer = stateMachineConsumer;
+    else if(this.isSQSEvent(request.event)) consumer = sqsConsumer;
     // else if(this.isSNSEvent(event)) return;
     else throw new Error("Unrecognized event. Can not generate consumer.");
     

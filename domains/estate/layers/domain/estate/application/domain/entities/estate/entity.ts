@@ -1,9 +1,9 @@
 import { AggregateRoot, ValueObject } from "../../../../../../../../../shared/typescript/abstracts";
 import { NotPutable } from "../../../../../../../../../shared/typescript/abstracts/errors";
-import { CoordinatesDTO } from "../../../types/coordinates";
 import { DomainEvent } from "../../../../../../../../../shared/typescript/types/domain";
+import { CoordinatesDTO } from "../../../types/coordinates";
 import { CreateEstateParams, EstateDTO } from "../../../types/estate";
-import { createEstateCreatedDomainEvent, EstateDomainEvents } from "../../events";
+import { EstateDomainEvents } from "../../events";
 import { Attributes } from "./attributes";
 
 /** The `Estate` entity represents physical land and any permanent structures attached to the it.*/
@@ -44,9 +44,6 @@ export class Estate extends AggregateRoot {
     const estate = new Estate(attributes);
     const isPutable = estate.attributes.isPutable();
     if (!isPutable) throw new NotPutable();
-
-    const estateCreatedDomainEvent = createEstateCreatedDomainEvent(estate.toDTO());
-    estate.registerDomainEvent(estateCreatedDomainEvent);
 
     return estate;
 

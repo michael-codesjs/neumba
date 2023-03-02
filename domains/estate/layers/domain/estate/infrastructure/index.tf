@@ -23,8 +23,8 @@ variable "region" {
   description = "Region the estate service infrastructure is created in."
 }
 
-module "storage" {
-  source = "./storage"
+module "domain-io" {
+  source = "./domain-io"
   region = var.region
   stage  = var.stage
 }
