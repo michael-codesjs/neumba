@@ -1,5 +1,5 @@
-import { AWS } from "../../../../../shared/typescript/types";
-import { generate } from "../../../../../shared/typescript/utilities/functions";
+import { AWS } from "../../../../../../../shared/typescript/types";
+import { generate } from "../../../../../../../shared/typescript/utilities/functions";
 
 const serverlessConfiguration: AWS.Service = {
 

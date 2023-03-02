@@ -24,7 +24,7 @@ variable "region" {
 }
 
 module "service-io" {
-  source = "./service-io"
+  source = "./domain-io"
   stage  = var.stage
   region = var.region
 }
