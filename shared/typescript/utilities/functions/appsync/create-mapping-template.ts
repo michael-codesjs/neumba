@@ -22,8 +22,8 @@ type CreateMappingTemplate = <
   type: T,
   field: F,
   dataSource: D,
-  request: RQ | false,
-  response: RP | false
+  request: RQ extends string ? `./adapters/primary/mapping-templates/${RQ}` : false,
+  response: RP extends string ? `./adapters/primary/mapping-templates/${RP}` : false,
 }
 
 export const createMappingTemplate: CreateMappingTemplate = (params) => {
@@ -32,7 +32,7 @@ export const createMappingTemplate: CreateMappingTemplate = (params) => {
     type,
     field,
     dataSource: source,
-    request: request || false,
-    response: response || false,
+    request: (typeof request === "string" ? `./adapters/primary/mapping-templates/${request}` : false) as any,
+    response: (typeof response === "string" ? `./adapters/primary/mapping-templates/${response}` : false) as any
   };
 };

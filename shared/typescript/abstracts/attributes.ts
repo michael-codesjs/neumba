@@ -24,7 +24,6 @@ export class Attributes<T extends CommonAttributesPlusOthers> extends Publisher 
 		this.Attributes.entityType = new Attribute<T["entityType"]["type"], true>({
 			required: true,
 			value: null as T["entityType"]["type"],
-			validate: entityType => getEntityTypes().includes(entityType),
 			immutable: true
 		});
 
@@ -45,7 +44,6 @@ export class Attributes<T extends CommonAttributesPlusOthers> extends Publisher 
 		this.Attributes.creatorType = new Attribute<T["creatorType"]["type"], true>({
 			required: true,
 			value: null,
-			validate: creatorType => getEntityTypes().includes(creatorType),
 			immutable: true
 		});
 

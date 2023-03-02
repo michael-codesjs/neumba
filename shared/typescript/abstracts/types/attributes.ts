@@ -1,5 +1,3 @@
-import { EntityType } from "../../types/api";
-
 export type AttributeParams<T, I> = {
   required?: boolean,
   validate?: (value: T) => boolean,
@@ -13,10 +11,10 @@ export type AttributeSchema<T = any, I extends boolean = false> = {
 };
 
 export type CommonAttributes = {
-  entityType: AttributeSchema<EntityType, true>
+  entityType: AttributeSchema<string, true>
   id: AttributeSchema<string, true>,
   creator: AttributeSchema<string, true>,
-  creatorType: AttributeSchema<EntityType, true>,
+  creatorType: AttributeSchema<string, true>,
   created: AttributeSchema<Date, true>,
   modified: AttributeSchema<Date, true>,
   discontinued: AttributeSchema<boolean, true>

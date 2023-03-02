@@ -104,7 +104,7 @@ describe("CommonLambdaInput", () => {
     return {
       "detail-type": input.type,
       detail: input,
-      source: "clockup.shared.tests.middleware.common-lambda-io",
+      source: "neumba.shared.tests.middleware.common-lambda-io",
     } as EventBridgeEvent<INPUT["type"], INPUT>;
   }
 

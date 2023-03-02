@@ -1,6 +1,6 @@
 resource "aws_api_gateway_rest_api" "estate_domain_api" {
 
-  name        = "nuemba-estate"
+  name        = "nuemba-estate-domain"
   description = "REST API for synchronous communication with the estate domain."
 
   tags = {
