@@ -4,7 +4,7 @@ import { createEstate } from "./adapters/primary";
 
 const serverlessConfiguration: AWS.Service = {
 
-  service: generate.serviceName("estate", "estate-domain"),
+  service: generate.serviceName("estate", "domain-estate"),
   frameworkVersion: "3",
 
   provider: {

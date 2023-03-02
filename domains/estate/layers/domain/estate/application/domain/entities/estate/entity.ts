@@ -3,7 +3,6 @@ import { NotPutable } from "../../../../../../../../../shared/typescript/abstrac
 import { DomainEvent } from "../../../../../../../../../shared/typescript/types/domain";
 import { CoordinatesDTO } from "../../../types/coordinates";
 import { CreateEstateParams, EstateDTO } from "../../../types/estate";
-import { EstateDomainEvents } from "../../events";
 import { Attributes } from "./attributes";
 
 /** The `Estate` entity represents physical land and any permanent structures attached to the it.*/
@@ -31,7 +30,7 @@ export class Estate extends AggregateRoot {
 
   }
 
-  protected registerDomainEvent(domainEvent: EstateDomainEvents): void {
+  protected registerDomainEvent(domainEvent: DomainEvent): void {
     this.domainEvents.push(domainEvent);
   }
 

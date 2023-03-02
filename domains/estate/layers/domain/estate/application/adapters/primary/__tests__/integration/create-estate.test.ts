@@ -1,6 +1,7 @@
 import { EventBridgeClient, PutEventsCommand } from "@aws-sdk/client-eventbridge";
 import { apiGatewaySignedFetch } from "../../../../../../../../../../shared/typescript/lib/api-gw-signed-fetcher";
 import { configureEnviromentVariables } from "../../../../../../../../../../shared/typescript/utilities/functions/miscellanous";
+import { CREATE_ESTATE_DOMAIN_COMMAND } from "../../../../domain/events";
 import { getRandomEstateAttributes } from "../../../../utilities/testing";
 
 const { REST_API_URL, REGION, DOMAIN_EVENT_BUS_NAME } = configureEnviromentVariables();
@@ -10,16 +11,23 @@ describe("API GW", () => {
   it(".creates an estate", async () => {
 
     const { creator, coordinates, name } = getRandomEstateAttributes();
-    const body = { creator, coordinates, name };
 
-    const response = await apiGatewaySignedFetch(REST_API_URL+"/estate", {
+    const domainCommand: CREATE_ESTATE_DOMAIN_COMMAND = {
+      date: new Date(),
+      name: "CREATE_ESTATE",
+      payload: { creator, coordinates, name },
+      source: "estate/estate.application.adapters.primary.tests.integration",
+      version: "1.0.0"
+    };
+
+    const response = await apiGatewaySignedFetch(REST_API_URL + "/estate", {
       method: "post",
-      body: JSON.stringify(body),
+      body: JSON.stringify(domainCommand),
     });
 
     const json = await response.json();
-    
-    expect(json).toMatchObject(body);
+
+    expect(json).toMatchObject(domainCommand.payload);
 
   });
 
@@ -27,18 +35,25 @@ describe("API GW", () => {
 
 describe("EventBridge", () => {
 
-  let client = new EventBridgeClient({ region: REGION || "eu-central-1" }); 
+  let client = new EventBridgeClient({ region: REGION || "eu-central-1" });
 
   it(".creates an estate", async () => {
 
     const { creator, coordinates, name } = getRandomEstateAttributes();
-    const body = { creator, coordinates, name };
+
+    const domainCommand: CREATE_ESTATE_DOMAIN_COMMAND = {
+      date: new Date(),
+      name: "CREATE_ESTATE",
+      payload: { creator, coordinates, name },
+      source: "estate/estate.application.adapters.primary.tests.integration",
+      version: "1.0.0"
+    };
 
     const putEventsCommand: PutEventsCommand = new PutEventsCommand({
       Entries: [{
-        DetailType: "CREATE_ESTATE",
-        Detail: JSON.stringify(body),
-        Source: "estate/estate.application.adapters.primary.tests.integration",
+        DetailType: domainCommand.name,
+        Detail: JSON.stringify(domainCommand),
+        Source: domainCommand.source,
         EventBusName: DOMAIN_EVENT_BUS_NAME
       }]
     });

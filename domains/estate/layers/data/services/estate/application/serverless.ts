@@ -1,9 +1,10 @@
-import { AWS } from "../../../../../../shared/typescript/types";
-import { generate } from "../../../../../../shared/typescript/utilities/functions";
+import { AWS } from "../../../../../../../shared/typescript/types";
+import { generate } from "../../../../../../../shared/typescript/utilities/functions";
+import { pubishEstateCreated } from "./adapters/primary";
 
 const serverlessConfiguration: AWS.Service = {
 
-  service: generate.serviceName("estate", "estate-data"),
+  service: generate.serviceName("estate", "data-estate"),
   frameworkVersion: "3",
 
   provider: {
@@ -38,6 +39,10 @@ const serverlessConfiguration: AWS.Service = {
       concurrency: 1
     }
 
+  },
+
+  functions: {
+    pubishEstateCreated
   }
 
 }
