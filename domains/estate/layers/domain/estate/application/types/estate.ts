@@ -17,3 +17,7 @@ export type CreateEstateParams = {
   name: string,
   coordinates: CoordinatesDTO
 };
+
+export type GetEstateParams = {
+  id: string
+};

@@ -4,7 +4,7 @@ import { publishEstateCreatedEvent } from "../publish-estate-created-event";
 
 jest.mock("../../repositories/domain-event");
 
-describe("Publis Estate Created Event", () => {
+describe("Publish Estate Created Event", () => {
 
   let mockedRepositoryClass: jest.MockedObjectDeep<typeof DomainEventsRepository> = jest.mocked(DomainEventsRepository);
 
@@ -21,14 +21,16 @@ describe("Publis Estate Created Event", () => {
   it(".generates right DomainEvent", async () => {
 
     // Arrange
-    const generatedDto = getRandomEstateAttributes();
 
+    const generatedDto = getRandomEstateAttributes();
     mockedRepositoryClass.prototype.publish.mockImplementationOnce(async () => { });
 
     // Act
-    await publishEstateCreatedEvent(generatedDto);
 
+    await publishEstateCreatedEvent(generatedDto);
     const repositoryInstance = mockedRepositoryClass.mock.instances[0];
+
+    // Assert
 
     expect(mockedRepositoryClass).toHaveBeenCalled();
     expect(repositoryInstance.publish).toHaveBeenCalledTimes(1);

@@ -16,7 +16,7 @@
     "test:adapters:primary:integration": "jest application/adapters/primary/__tests__/integration",
     "test:adapters:secondary": "jest applicationadapters/secondary",
     "test:repositories": "jest application/repositories",
-    "test:use-cases": "jest applicationuse-cases"
+    "test:use-cases": "jest application/use-cases"
   },
   "dependencies": {
     "@middy/core": "^3.4.0",
