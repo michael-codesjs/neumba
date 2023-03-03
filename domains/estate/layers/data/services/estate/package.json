@@ -7,7 +7,9 @@
   "author": "Michael Phiri(github@michael-codesjs)",
   "license": "MIT",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "test": "jest --silent"
+  },
   "dependencies": {
     "@middy/core": "^3.4.0",
     "@middy/input-output-logger": "^3.4.0",

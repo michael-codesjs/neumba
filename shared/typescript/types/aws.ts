@@ -18,7 +18,8 @@ export namespace AWS {
 
   export type AwsFunctionsWithIamRoleStatements = {
     [k: string]: RequiredAWS["functions"][string | number] & {
-      iamRoleStatements?: Array<iamRoleStatement>
+      iamRoleStatements?: Array<iamRoleStatement>,
+      iamRoleStatementsName?: string
     }
   };
 

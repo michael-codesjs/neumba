@@ -1,10 +1,10 @@
 import { ESTATE_CREATED_DOMAIN_EVENT } from "../domain/events/types";
-import { DomainEventsRepositories } from "../repositories";
+import { DomainEventsRepository } from "../repositories";
 import { EstateDTO } from "../types";
 
 export const publishEstateCreatedEvent = async (params: EstateDTO): Promise<void> => {
 
-  const repository = new DomainEventsRepositories();
+  const repository = new DomainEventsRepository();
 
   const domainEvent: ESTATE_CREATED_DOMAIN_EVENT = {
     name: "ESTATE_CREATED",

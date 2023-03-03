@@ -2,7 +2,7 @@ import { DomainEvent as TDomainEvent } from "../../../../../../../../shared/type
 import { EventBridgeAdapter } from "../adapters/secondary";
 import { EventAdapter } from "../interfaces";
 
-export class DomainEventsRepositories {
+export class DomainEventsRepository {
 
   private adapter: EventAdapter;
 

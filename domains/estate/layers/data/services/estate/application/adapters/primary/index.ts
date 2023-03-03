@@ -1,1 +1,1 @@
-export * from "./publish-estate-created";
+export * from "./publish-estate-created-event";

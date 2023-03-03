@@ -1,6 +1,6 @@
 import { AWS } from "../../../../../../../shared/typescript/types";
 import { generate } from "../../../../../../../shared/typescript/utilities/functions";
-import { pubishEstateCreated } from "./adapters/primary";
+import { publishEstateCreatedEvent } from "./adapters/primary";
 
 const serverlessConfiguration: AWS.Service = {
 
@@ -42,7 +42,7 @@ const serverlessConfiguration: AWS.Service = {
   },
 
   functions: {
-    pubishEstateCreated
+    publishEstateCreatedEvent
   }
 
 }
