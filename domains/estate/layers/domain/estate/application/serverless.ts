@@ -1,6 +1,6 @@
 import { AWS } from "../../../../../../shared/typescript/types";
 import { generate } from "../../../../../../shared/typescript/utilities/functions";
-import { createEstate } from "./adapters/primary";
+import { createEstate, getEstate } from "./adapters/primary";
 
 const serverlessConfiguration: AWS.Service = {
 
@@ -8,16 +8,16 @@ const serverlessConfiguration: AWS.Service = {
   frameworkVersion: "3",
 
   provider: {
-    
+
     name: "aws",
     region: "eu-central-1",
     stage: "dev",
     runtime: "nodejs18.x",
 
     apiGateway: {
-			restApiId: "${ssm:/estate/${self:custom.stage}/domain/estate/infrastructure/api/id}",
-			restApiRootResourceId: "${ssm:/estate/${self:custom.stage}/domain/estate/infrastructure/api/root-resource-id}"
-		}
+      restApiId: "${ssm:/estate/${self:custom.stage}/domain/estate/infrastructure/api/id}",
+      restApiRootResourceId: "${ssm:/estate/${self:custom.stage}/domain/estate/infrastructure/api/root-resource-id}"
+    }
 
   },
 
@@ -45,11 +45,12 @@ const serverlessConfiguration: AWS.Service = {
       platform: "node",
       concurrency: 1
     }
-    
+
   },
 
   functions: {
-    createEstate
+    createEstate,
+    getEstate
   }
 
 };
