@@ -20,10 +20,7 @@ export class Attribute<T = any, I = false> {
 	get() { return this.value; }
 
 	set(value: T, modified: Date = new Date()) {
-		if (!this.validate(value)) {
-			console.log("IV:", value);
-			throw new InvalidAttributeValue();
-		}
+		if (!this.validate(value)) throw new InvalidAttributeValue();
 		this.value = value;
 		this.modified = modified;
 	}

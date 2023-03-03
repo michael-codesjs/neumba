@@ -10,13 +10,14 @@
   "scripts": {
     "generate-env": "ts-node scripts/generate-env.ts",
     "test": "jest --silent",
+    "test:domain": "jest application/domain",
     "test:adapters": "jest application/adapters",
     "test:adapters:primary": "jest application/adapters/primary",
     "test:adapters:primary:unit": "jest application/adapters/primary/__tests__/unit",
     "test:adapters:primary:integration": "jest application/adapters/primary/__tests__/integration",
     "test:adapters:secondary": "jest applicationadapters/secondary",
     "test:repositories": "jest application/repositories",
-    "test:use-cases": "jest application/use-cases"
+    "test:use-cases": "jest --verbose application/use-cases"
   },
   "dependencies": {
     "@middy/core": "^3.4.0",

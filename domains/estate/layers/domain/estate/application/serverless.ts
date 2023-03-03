@@ -1,6 +1,6 @@
 import { AWS } from "../../../../../../shared/typescript/types";
 import { generate } from "../../../../../../shared/typescript/utilities/functions";
-import { createEstate, getEstate } from "./adapters/primary";
+import { createEstate, getEstate, updateEstate } from "./adapters/primary";
 
 const serverlessConfiguration: AWS.Service = {
 
@@ -50,7 +50,8 @@ const serverlessConfiguration: AWS.Service = {
 
   functions: {
     createEstate,
-    getEstate
+    getEstate,
+    updateEstate
   }
 
 };

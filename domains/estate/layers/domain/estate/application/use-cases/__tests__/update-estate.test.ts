@@ -23,25 +23,24 @@ describe("Update Estate", () => {
     // Arrange 
 
     const dummyEstateAttributes: EstateDTO = getRandomEstateAttributes(); // generate random estate attributes.
-    const { name } = getRandomEstateAttributes(); // attributes to be updated.
+    const { name } = getRandomEstateAttributes();
+    const attributesToBeUpdated = { name };
 
     // mock implementations
-    mockedRepositoryClass.prototype.get.mockImplementationOnce(() => Promise.resolve(Estate.fromDTO(dummyEstateAttributes)));
-    mockedRepositoryClass.prototype.update.mockImplementationOnce((estate) => Promise.resolve(estate));
-    mockedEstateClass.prototype.update.mockImplementationOnce(() => Promise.resolve())
-    mockedEstateClass.prototype.toDTO.mockImplementationOnce(() => dummyEstateAttributes);
+    mockedRepositoryClass.prototype.get.mockImplementation(() => Promise.resolve(Estate.fromDTO(dummyEstateAttributes)));
+    mockedRepositoryClass.prototype.update.mockImplementation((estate) => Promise.resolve(estate));
+    mockedEstateClass.prototype.toDTO.mockImplementation(() => ({ ...dummyEstateAttributes, ...attributesToBeUpdated }));
 
     // Act
 
-    const response = await updateEstate({ id: dummyEstateAttributes.id });
+    const response = await updateEstate({ ...dummyEstateAttributes, ...attributesToBeUpdated  });
 
     // Assert
 
-    const instanciatedRepository = mockedRepositoryClass.mock.instances[0];
+    const instanciatedRepository = mockedRepositoryClass.mock.instances[mockedRepositoryClass.mock.instances.length-1];
 
     expect(instanciatedRepository.get).toHaveBeenCalledWith(dummyEstateAttributes.id);
-    expect(instanciatedRepository.get).toHaveReturned
-    expect(response).toStrictEqual(dummyEstateAttributes);
+    expect(response).toStrictEqual({ ...dummyEstateAttributes, ...attributesToBeUpdated });
 
   });
 
