@@ -2,12 +2,12 @@ import { Estate } from "../../domain/entities/estate/entity";
 import { EstateRepository } from "../../repositories/estate";
 import { EstateDTO } from "../../types";
 import { getRandomEstateAttributes } from "../../utilities/testing";
-import { getEstate } from "../";
+import { updateEstate } from "../";
 
 jest.mock("../../domain/entities/estate/entity");
 jest.mock("../../repositories/estate");
 
-describe("Get Estate", () => {
+describe("Update Estate", () => {
 
   let mockedEstateClass: jest.MockedObjectDeep<typeof Estate> = jest.mocked(Estate);
   let mockedRepositoryClass: jest.MockedObjectDeep<typeof EstateRepository> = jest.mocked(EstateRepository);
@@ -23,20 +23,24 @@ describe("Get Estate", () => {
     // Arrange 
 
     const dummyEstateAttributes: EstateDTO = getRandomEstateAttributes(); // generate random estate attributes.
+    const { name } = getRandomEstateAttributes(); // attributes to be updated.
 
     // mock implementations
-    mockedRepositoryClass.prototype.get.mockImplementationOnce(async () => Estate.fromDTO(dummyEstateAttributes));
+    mockedRepositoryClass.prototype.get.mockImplementationOnce(() => Promise.resolve(Estate.fromDTO(dummyEstateAttributes)));
+    mockedRepositoryClass.prototype.update.mockImplementationOnce((estate) => Promise.resolve(estate));
+    mockedEstateClass.prototype.update.mockImplementationOnce(() => Promise.resolve())
     mockedEstateClass.prototype.toDTO.mockImplementationOnce(() => dummyEstateAttributes);
 
     // Act
 
-    const response = await getEstate({ id: dummyEstateAttributes.id });
+    const response = await updateEstate({ id: dummyEstateAttributes.id });
 
     // Assert
 
     const instanciatedRepository = mockedRepositoryClass.mock.instances[0];
 
     expect(instanciatedRepository.get).toHaveBeenCalledWith(dummyEstateAttributes.id);
+    expect(instanciatedRepository.get).toHaveReturned
     expect(response).toStrictEqual(dummyEstateAttributes);
 
   });

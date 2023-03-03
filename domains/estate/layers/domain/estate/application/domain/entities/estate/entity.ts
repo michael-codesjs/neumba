@@ -1,8 +1,10 @@
 import { AggregateRoot, ValueObject } from "../../../../../../../../../shared/typescript/abstracts";
-import { NotPutable } from "../../../../../../../../../shared/typescript/abstracts/errors";
+import { NotPutable, NotUpdateable } from "../../../../../../../../../shared/typescript/abstracts/errors";
 import { DomainEvent } from "../../../../../../../../../shared/typescript/types/domain";
 import { CoordinatesDTO } from "../../../types/coordinates";
 import { CreateEstateParams, EstateDTO } from "../../../types/estate";
+import { UpdateEstateParams } from "./types";
+
 import { Attributes } from "./attributes";
 
 /** The `Estate` entity represents physical land and any permanent structures attached to the it.*/
@@ -46,6 +48,17 @@ export class Estate extends AggregateRoot {
 
     return estate;
 
+  }
+
+  update(attributes: UpdateEstateParams): void {
+    
+    const { name } = attributes;
+    this.attributes.set({ name });
+
+    const isUpdateable = this.attributes.isUpdateable();
+    
+    if(!isUpdateable) throw new NotUpdateable();
+  
   }
 
   public toDTO() {

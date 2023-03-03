@@ -7,3 +7,7 @@ export type AttributesSchema = CommonAttributes & {
   name: AttributeSchema<string>,
   coordinates: AttributeSchema<CoordinatesDTO, true>
 };
+
+export type UpdateEstateParams = {
+  name?: string
+}
