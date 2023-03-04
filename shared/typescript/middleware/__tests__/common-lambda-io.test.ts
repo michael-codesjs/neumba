@@ -1,11 +1,70 @@
+import { marshall } from "@aws-sdk/util-dynamodb";
 import middy from "@middy/core";
-import { APIGatewayProxyEvent, AppSyncResolverEvent, Context, EventBridgeEvent, SNSEvent, SNSEventRecord, SQSEvent } from "aws-lambda";
+import { APIGatewayProxyEvent, AppSyncResolverEvent, Context, DynamoDBStreamEvent, EventBridgeEvent, SNSEvent, SNSEventRecord, SQSEvent } from "aws-lambda";
 import { Chance } from "chance";
-import { CommonInput } from "../../types/io";
+import { CommonInput, DbStreamInput } from "../../types/io";
 import { commonLambdaInput } from "../common-lambda-input";
 import { CommonInputHandler, StateMachineEvent } from "../common-lambda-input/types";
 
 const chance = new Chance();
+
+type INPUT = CommonInput<string, {
+  string: string,
+  number: number,
+  boolean: boolean,
+  array: Array<any>
+  object: Record<string, any>
+}>;
+
+const generateInput = (meta: Record<string, any> = {}): INPUT => ({
+  type: chance.word().toUpperCase(),
+  correlationId: chance.guid(),
+  meta,
+  payload: {
+    string: chance.string(),
+    number: chance.integer(),
+    boolean: chance.bool(),
+    array: Array(chance.integer({ min: 1, max: 10 })).fill(null).map(() => chance.string()),
+    object: {
+      [chance.string()]: chance.string()
+    }
+  }
+});
+
+const withMiddleware = (lambda: any) => middy(lambda).use(commonLambdaInput());
+
+describe("DynamoDbStream", () => {
+  
+  const getDynamoDbStreamEvent = (): DynamoDBStreamEvent => ({
+    Records: Array(chance.integer({ min: 1, max: 10 })).fill(null).map(() => {
+      const message = marshall(generateInput());
+      return {
+        dynamodb: {
+          NewImage: message as any,
+          OldImage: message as any
+        }
+      };
+    })
+  });
+
+  test(".consumer", async () => {
+
+    const dynamodbStreamEvent = getDynamoDbStreamEvent();
+
+    const lambda: CommonInputHandler<DbStreamInput<INPUT>, void> = async event => {
+      event.inputs.forEach((input, index) => {
+        const dynamoDbStreamEventEquivalentNewImage = dynamodbStreamEvent.Records[index].dynamodb.NewImage;
+        const dynamoDbStreamEventEquivalentOldImage = dynamodbStreamEvent.Records[index].dynamodb.OldImage;
+        expect(dynamoDbStreamEventEquivalentNewImage).toStrictEqual(marshall(input.new));
+        expect(dynamoDbStreamEventEquivalentOldImage).toStrictEqual(marshall(input.old));
+      });
+    };
+
+    await withMiddleware(lambda)(dynamodbStreamEvent, {} as Context);
+
+  });
+
+});
 
 describe("CommonLambdaInput", () => {
 
@@ -13,29 +72,6 @@ describe("CommonLambdaInput", () => {
 
   beforeEach(() => {
     type = chance.string({ alpha: true, casing: "upper", numeric: false, symbols: false });
-  });
-
-  type INPUT = CommonInput<string, {
-    string: string,
-    number: number,
-    boolean: boolean,
-    array: Array<any>
-    object: Record<string, any>
-  }>;
-
-  const generateInput = (meta: Record<string, any> = {}): INPUT => ({
-    type: chance.word().toUpperCase(),
-    correlationId: chance.guid(),
-    meta,
-    payload: {
-      string: chance.string(),
-      number: chance.integer(),
-      boolean: chance.bool(),
-      array: Array(chance.integer({ min: 1, max: 10 })).fill(null).map(() => chance.string()),
-      object: {
-        [chance.string()]: chance.string()
-      }
-    }
   });
 
   const getSNSEvent = (): SNSEvent => ({

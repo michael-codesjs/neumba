@@ -8,3 +8,9 @@ export type CommonInput<T, P> = {
   /** input payload. */
   payload: P
 };
+
+type RecordAny = Record<string, any>;
+export type DbStreamInput<N extends RecordAny = RecordAny, O extends RecordAny = N> = {
+  new: N,
+  old: O
+};;

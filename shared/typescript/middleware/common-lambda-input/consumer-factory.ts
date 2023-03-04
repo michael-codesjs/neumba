@@ -1,7 +1,7 @@
-import { AppSyncResolverEvent, SNSEvent, SQSEvent, APIGatewayProxyEvent, EventBridgeEvent, Context } from "aws-lambda";
+import { AppSyncResolverEvent, SNSEvent, SQSEvent, APIGatewayProxyEvent, EventBridgeEvent, Context, DynamoDBStreamEvent } from "aws-lambda";
 import middy from "@middy/core";
 import { CommonInputSources, Consumer, StateMachineEvent } from "./types";
-import { apiGatewayConsumer, eventBridgeConsumer, stateMachineConsumer, sqsConsumer, appsyncConsumer } from "./consumers";
+import { apiGatewayConsumer, eventBridgeConsumer, stateMachineConsumer, sqsConsumer, appsyncConsumer, dynamoDbStreamConsumer } from "./consumers";
 
 class ConsumerFactory {
 
@@ -16,6 +16,10 @@ class ConsumerFactory {
     const isApiGwEvent = ["body", "headers", "httpMethod", "path"].every(key => key in request.event);
     request.internal.isApiGwEvent = isApiGwEvent;
     return isApiGwEvent;
+  }
+
+  private isDynamoDbStreamEvent(event: CommonInputSources<any,any>): event is DynamoDBStreamEvent {
+    return this.hasRecords(event) && "dynamodb" in event.Records[0];
   }
 
   private isSQSEvent(event: CommonInputSources<any, any>): event is SQSEvent {
@@ -45,6 +49,7 @@ class ConsumerFactory {
     if (this.isEventBridgeEvent(request.event)) consumer = eventBridgeConsumer;
     else if(this.isAppSyncEvent(request.event)) consumer = appsyncConsumer;
     else if (this.isApiGatewayEvent(request)) consumer = apiGatewayConsumer;
+    else if (this.isDynamoDbStreamEvent(request.event)) consumer = dynamoDbStreamConsumer;
     else if (this.isStateMachineEvent(request.event)) consumer = stateMachineConsumer;
     else if(this.isSQSEvent(request.event)) consumer = sqsConsumer;
     // else if(this.isSNSEvent(event)) return;
