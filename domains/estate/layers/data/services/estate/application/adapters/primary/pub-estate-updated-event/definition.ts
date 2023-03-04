@@ -27,6 +27,6 @@ export const definition: AWS.ServerlessLambdaFunction = {
     Resource: "${ssm:/neumba/${self:custom.stage}/domain/estate/infrastructure/domain-io/event-bus/arn}"
   }],
   environment: {
-    DOMAIN_EVENT_BUS_NAME: "${ssm:/neumba/${self:custom.stage}/service/estate/infrastructure/storage/table/estate/name}"
+    DOMAIN_EVENT_BUS_NAME: "${ssm:/neumba/${self:custom.stage}/domain/estate/infrastructure/domain-io/event-bus/name}"
   }
 }
