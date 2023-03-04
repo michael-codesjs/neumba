@@ -21,7 +21,6 @@ export const definition: AWS.ServerlessLambdaFunction = {
       }]
     }
   }],
-  iamRoleStatementsName: "pubEstateCreatedEvent",
   iamRoleStatements: [{
     Effect: "Allow",
     Action: ["events:putEvents"],
