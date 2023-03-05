@@ -1,0 +1,1 @@
+export { definition as deleteEstate } from "./definition";

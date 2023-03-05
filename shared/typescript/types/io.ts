@@ -14,3 +14,8 @@ export type DbStreamInput<N extends RecordAny = RecordAny, O extends RecordAny =
   new: N,
   old: O
 };;
+
+export type OpearationResponse = {
+  success: boolean,
+  message?: string
+}
