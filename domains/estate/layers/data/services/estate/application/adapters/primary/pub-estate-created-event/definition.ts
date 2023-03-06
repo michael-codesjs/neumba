@@ -19,7 +19,7 @@ export const definition: AWS.ServerlessLambdaFunction = {
           }
         }
       }]
-    }
+    },
   }],
   iamRoleStatements: [{
     Effect: "Allow",

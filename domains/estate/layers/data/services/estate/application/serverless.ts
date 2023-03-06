@@ -43,7 +43,7 @@ const serverlessConfiguration: AWS.Service = {
 
   functions: {
     pubEstateCreatedEvent,
-    pubEstateUpdatedEvent
+    pubEstateUpdatedEvent,
   }
 
 }

@@ -1,7 +1,7 @@
 import { withCommonInput, withLambdaIOStandard } from "../../../../../../../../../../shared/typescript/hofs";
 import { CommonInputHandler } from "../../../../../../../../../../shared/typescript/middleware/common-lambda-input/types";
 import { DbStreamInput } from "../../../../../../../../../../shared/typescript/types/io";
-import { EstateDTO } from "../../../../../../../domain/estate/application/types";
+import { EstateDTO } from "../../../types/estate";
 import { publishEstateUpdatedEvent } from "../../../use-cases";
 
 const inputMapper = async (input: DbStreamInput<EstateDTO>): Promise<void> => {
