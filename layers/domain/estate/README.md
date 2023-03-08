@@ -1,0 +1,1 @@
+## **ESTATE(core) sub-domain.**

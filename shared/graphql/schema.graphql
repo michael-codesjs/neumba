@@ -23,6 +23,16 @@ type Coordinates {
   y: String!
 }
 
+input CoordinatesInput {
+  x: String!
+  y: String!
+}
+
+input CreateEstateInput {
+  name: String!
+  coorindates: CoordinatesInput
+}
+
 type Estate implements Common {
   id: ID!
   entityType: EntityType!
@@ -35,14 +45,17 @@ type Estate implements Common {
   coorindates: Coordinates
 }
 
-input CoordinatesInput {
-  x: String!
-  y: String!
-}
-
-input CreateEstateInput {
+type User implements Common {
+  id: ID!
+  entityType: EntityType!
+  creator: ID!
+  creatorType: EntityType!
+  created: AWSDateTime!
+  modified: AWSDateTime
+  discontinued: Boolean!
   name: String!
-  coorindates: CoordinatesInput
+  phoneNumber: AWSPhone!
+  email: AWSEmail
 }
 
 type Query {

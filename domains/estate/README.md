@@ -1,1 +1,0 @@
-## **Estate(core) sub-domain. **
