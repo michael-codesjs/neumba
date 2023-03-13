@@ -1,5 +1,5 @@
-import { EstateDTO } from "../../../../types";
-import { EstateDatabaseAdapter } from "../../../../interfaces/adapter";
+import { EstateDTO } from "@typings";
+import { EstateDatabaseAdapter } from "@interfaces";
 import { estate } from "./one-table";
 
 /** Estate entity DynamoDB secondary adapter. */

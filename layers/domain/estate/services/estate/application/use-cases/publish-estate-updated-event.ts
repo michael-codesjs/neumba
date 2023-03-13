@@ -1,6 +1,6 @@
-import { ESTATE_UPDATED_DOMAIN_EVENT } from "../domain/events/types";
-import { DomainEventsRepository } from "../repositories";
-import { EstateDTO } from "../types";
+import { ESTATE_UPDATED_DOMAIN_EVENT } from "@domain/events/types";
+import { DomainEventsRepository } from "@repositories";
+import { EstateDTO } from "@typings";
 
 export const publishEstateUpdatedEvent = async (params: EstateDTO): Promise<void> => {
 

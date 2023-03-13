@@ -1,9 +1,9 @@
-import { withCommonInput, withLambdaIOStandard } from "../../../../../../../../../shared/typescript/hofs";
-import { apiGwInputTransformer } from "../../../../../../../../../shared/typescript/middleware";
-import { CommonInputHandler } from "../../../../../../../../../shared/typescript/middleware/common-lambda-input/types";
-import { GetEstateDomainCommandPayload, GET_ESTATE_DOMAIN_COMMAND } from "../../../domain/events";
-import { EstateDTO } from "../../../types";
-import { getEstate } from "../../../use-cases";
+import { withCommonInput, withLambdaIOStandard } from "@shared/hofs";
+import { apiGwInputTransformer } from "@shared//middleware";
+import { CommonInputHandler } from "@shared/middleware/common-lambda-input/types";
+import { GetEstateDomainCommandPayload, GET_ESTATE_DOMAIN_COMMAND } from "domain/events";
+import { EstateDTO } from "types";
+import { getEstate } from "use-cases";
 
 const inputMapper = async (input: GET_ESTATE_DOMAIN_COMMAND): Promise<EstateDTO> => {
   return await getEstate(input.payload);

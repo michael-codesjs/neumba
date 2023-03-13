@@ -1,10 +1,9 @@
-import { AWS } from "../../../../../../shared/typescript/types";
-import { generate } from "../../../../../../shared/typescript/utilities/functions";
+import { AWS } from "@shared/types";
 import { createEstate, deleteEstate, getEstate, publishEstateCreatedEvent, publishEstateUpdatedEvent, updateEstate } from "./adapters/primary";
 
 const serverlessConfiguration: AWS.Service = {
 
-  service: generate.serviceName("estate", "domain-estate"),
+  service: "neumba.domain.estate.estate",
   frameworkVersion: "3",
 
   provider: {

@@ -1,5 +1,5 @@
-import { AttributeSchema, CommonAttributes } from "../../../../../../../../../shared/typescript/abstracts/types";
-import { CoordinatesDTO } from "../../../types/coordinates";
+import { AttributeSchema, CommonAttributes } from "@shared/abstracts/types";
+import { CoordinatesDTO } from "@typings";
 
 export type AttributesSchema = CommonAttributes & {
   entityType: AttributeSchema<"ESTATE", true>,
@@ -10,4 +10,10 @@ export type AttributesSchema = CommonAttributes & {
 
 export type UpdateEstateParams = {
   name?: string
-}
+};
+
+export type CreateEstateParams = {
+  creator: string,
+  name: string,
+  coordinates: CoordinatesDTO
+};

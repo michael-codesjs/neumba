@@ -1,5 +1,5 @@
-import { DomainEvent } from "../../../../../../../shared/typescript/types/domain";
-import { EstateDTO } from "../types";
+import { DomainEvent } from "@shared/types/domain";
+import { EstateDTO } from "@typings";
 
 export interface EstateDatabaseAdapter {
   get(id: string): Promise<EstateDTO>,

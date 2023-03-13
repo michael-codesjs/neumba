@@ -1,8 +1,8 @@
-import { withCommonInput, withLambdaIOStandard } from "../../../../../../../../../shared/typescript/hofs";
-import { CommonInputHandler } from "../../../../../../../../../shared/typescript/middleware/common-lambda-input/types";
-import { CREATE_ESTATE_DOMAIN_COMMAND } from "../../../domain/events";
-import { EstateDTO } from "../../../types";
-import { createEstate } from "../../../use-cases";
+import { CREATE_ESTATE_DOMAIN_COMMAND } from "@domain/events";
+import { withCommonInput, withLambdaIOStandard } from "@shared/hofs";
+import { CommonInputHandler } from "@shared/middleware/common-lambda-input/types";
+import { EstateDTO } from "@typings";
+import { createEstate } from "@use-cases";
 
 const inputMapper = async (input: CREATE_ESTATE_DOMAIN_COMMAND): Promise<EstateDTO> => {
   const { payload } = input;

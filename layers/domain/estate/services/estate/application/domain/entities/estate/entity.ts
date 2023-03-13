@@ -1,9 +1,8 @@
-import { AggregateRoot, ValueObject } from "../../../../../../../../../shared/typescript/abstracts";
-import { NotPutable, NotUpdateable } from "../../../../../../../../../shared/typescript/abstracts/errors";
-import { DomainEvent } from "../../../../../../../../../shared/typescript/types/domain";
-import { CoordinatesDTO } from "../../../types/coordinates";
-import { CreateEstateParams, EstateDTO } from "../../../types/estate";
-import { UpdateEstateParams } from "./types";
+import { AggregateRoot, ValueObject } from "@shared";
+import { NotPutable, NotUpdateable } from "@shared/abstracts/errors";
+import { DomainEvent } from "@shared/types/domain";
+import { CoordinatesDTO, EstateDTO } from "@typings";
+import { UpdateEstateParams, CreateEstateParams } from "./types";
 
 import { Attributes } from "./attributes";
 

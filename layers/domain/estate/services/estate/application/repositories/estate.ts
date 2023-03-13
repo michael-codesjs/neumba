@@ -1,6 +1,6 @@
-import { EstateDynamoDbAdapter } from "../adapters/secondary";
-import { Estate } from "../domain/entities/estate";
-import { EstateDatabaseAdapter } from "../interfaces/adapter";
+import { EstateDynamoDbAdapter } from "@adapters/secondary";
+import { Estate } from "@domain/entities/estate";
+import { EstateDatabaseAdapter } from "@interfaces/adapter";
 
 export class EstateRepository {
 

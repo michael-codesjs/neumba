@@ -1,6 +1,6 @@
 import { Model } from "dynamodb-onetable";
 import { table } from "./table";
-import { EstateDTO } from "../../../../../types";
+import { EstateDTO } from "@typings";
 
 export const estate = new Model<EstateDTO>(table, "Estate", {
   fields: {

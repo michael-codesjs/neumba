@@ -1,6 +1,6 @@
-import { EstateNotFound } from "../errors/estate-not-found";
-import { EstateRepository } from "../repositories/estate";
-import { EstateDTO } from "../types";
+import { EstateNotFound } from "@errors/estate-not-found";
+import { EstateRepository } from "@repositories/estate";
+import { EstateDTO } from "@typings";
 
 type UpdateEstateParams = {
   id: string,

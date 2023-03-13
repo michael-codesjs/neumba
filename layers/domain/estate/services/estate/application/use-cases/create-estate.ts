@@ -1,6 +1,6 @@
-import { Estate } from "../domain/entities/estate";
-import { EstateRepository } from "../repositories/estate";
-import { CreateEstateParams, EstateDTO } from "../types";
+import { Estate } from "@domain/entities/estate";
+import { EstateRepository } from "@repositories";
+import { CreateEstateParams, EstateDTO } from "@typings";
 
 export const createEstate = async (params: CreateEstateParams): Promise<EstateDTO> => {
 

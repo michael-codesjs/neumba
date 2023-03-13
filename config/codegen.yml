@@ -1,8 +1,0 @@
-overwrite: true
-schema:
-  - shared/graphql/schema.graphql
-  - shared/graphql/appsync.types.graphql
-generates:
-  'shared/typescript/types/api.ts':
-    plugins:
-      - '@graphql-codegen/typescript'

@@ -2,19 +2,19 @@ resource "aws_appsync_graphql_api" "graphql_api" {
 
   name                = "neumba-api-${var.stage}"
   authentication_type = "AMAZON_COGNITO_USER_POOLS"
-  schema              = file("${path.module}/../../../../shared/graphql/schema.graphql")
+  schema              = file("${path.module}/../../../../@shared/graphql/schema.graphql")
 
   tags = {
     Name          = "neumba-${var.stage}"
     Application   = "neumba"
     Stage         = var.stage
-    "Description" = "neumba ${var.stage} GraphQL API."
+    Description = "neumba ${var.stage} GraphQL API."
   }
 
   user_pool_config {
     aws_region     = var.region
     default_action = "ALLOW"
-    user_pool_id   = var.cognito_user_pool_id
+    user_pool_id   = data.aws_cognito_user_pools.cognito_user_pool.id
   }
 
   additional_authentication_provider {

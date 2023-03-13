@@ -1,9 +1,14 @@
+# builds
+bin
+dist
+tsconfig.tsbuildinfo
 # .vscode should also be included when and if I'll get more people to work on this.
 # package directories
 node_modules
 jspm_packages
 
-.yarn-error.log
+*.yarn-error.log
+.yarn
 
 
 # Docs

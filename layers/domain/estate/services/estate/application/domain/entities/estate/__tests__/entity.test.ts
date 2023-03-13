@@ -1,4 +1,4 @@
-import { getRandomEstateAttributes } from "../../../../utilities/testing";
+import { getRandomEstateAttributes } from "@utilities/testing";
 import { Estate } from "../entity";
 
 describe("Estate", () => {

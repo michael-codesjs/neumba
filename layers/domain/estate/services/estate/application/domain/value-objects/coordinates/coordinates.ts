@@ -1,6 +1,6 @@
-import { ValueObject } from "../../../../../../../../../shared/typescript/abstracts";
-import { DomainEvent } from "../../../../../../../../../shared/typescript/types/domain";
-import { CoordinatesDTO } from "../../../types/coordinates";
+import { ValueObject } from "@shared/abstracts";
+import { DomainEvent } from "@shared/types/domain";
+import { CoordinatesDTO } from "@typings";
 
 /** Coordinates value object. */
 export class Coordinates extends ValueObject<CoordinatesDTO, true> {

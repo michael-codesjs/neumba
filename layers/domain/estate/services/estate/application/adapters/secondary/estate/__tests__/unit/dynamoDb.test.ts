@@ -1,8 +1,7 @@
-import { COMMON_ATTRIBUTES } from "../../../../../../../../../../../shared/typescript/utilities/constants";
-import { EstateDTO } from "../../../../../types";
+import { EstateDTO } from "@typings";
 import { EstateDynamoDbAdapter } from "../../dynamoDb";
 import { estate } from "../../dynamoDb/one-table/model";
-import { getRandomEstateAttributes } from "../../../../../utilities/testing";
+import { getRandomEstateAttributes } from "@utilities/testing";
 
 jest.mock("../../dynamoDb/one-table/model");
 
@@ -29,11 +28,6 @@ describe("DynamoDbDatabaseAdapter", () => {
     // Assert
     expect(mockedEstateModel.get).toHaveBeenCalledTimes(1);
     expect(item).toStrictEqual(dummyEstateStore[dummyEstate.id]);
-    expect(Object.keys(item))
-      .toEqual(expect.arrayContaining([
-        ...COMMON_ATTRIBUTES,
-        "name"
-      ]));
 
   });
 

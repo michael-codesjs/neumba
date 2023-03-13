@@ -1,13 +1,13 @@
-import { withCommonInput, withLambdaIOStandard } from "../../../../../../../../../shared/typescript/hofs";
-import { CommonInputHandler } from "../../../../../../../../../shared/typescript/middleware/common-lambda-input/types";
-import { OpearationResponse } from "../../../../../../../../../shared/typescript/types/io";
-import { DELETE_ESTATE_DOMAIN_COMMAND } from "../../../domain/events";
-import { deleteEstate } from "../../../use-cases";
+import { DELETE_ESTATE_DOMAIN_COMMAND } from "@domain/events";
+import { withCommonInput, withLambdaIOStandard } from "@shared/hofs";
+import { CommonInputHandler } from "@shared/middleware/common-lambda-input/types";
+import { OpearationResponse } from "@shared/types/io";
+import { deleteEstate } from "@use-cases";
 
 const inputMapper = async (input: DELETE_ESTATE_DOMAIN_COMMAND): Promise<OpearationResponse> => {
-  
+
   await deleteEstate(input.payload);
-  
+
   return {
     success: true,
     message: "Estate has been deleted successfully."

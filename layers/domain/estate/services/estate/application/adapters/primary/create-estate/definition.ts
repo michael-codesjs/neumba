@@ -1,5 +1,5 @@
-import { AWS } from "../../../../../../../../../shared/typescript/types";
-import { handlerPath } from "../../../../../../../../../shared/typescript/utilities/functions/miscellanous";
+import{ AWS } from "@shared";
+import { handlerPath }  from "@shared/utilities/functions/miscellanous";
 
 // 'createEstate' lambda function sls definition.
 export const definition: AWS.ServerlessLambdaFunction = {
@@ -32,4 +32,4 @@ export const definition: AWS.ServerlessLambdaFunction = {
   environment: {
     ESTATE_DYNAMODB_TABLE_NAME: "${ssm:/neumba/${self:custom.stage}/service/estate/infrastructure/storage/table/estate/name}"
   }
-}
+};

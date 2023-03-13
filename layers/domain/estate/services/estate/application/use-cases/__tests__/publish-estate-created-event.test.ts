@@ -1,5 +1,5 @@
-import { getRandomEstateAttributes } from "../../utilities/testing";
-import { DomainEventsRepository } from "../../repositories/domain-event";
+import { getRandomEstateAttributes } from "@utilities/testing";
+import { DomainEventsRepository } from "@repositories/domain-event";
 import { publishEstateCreatedEvent } from "../publish-estate-created-event";
 
 jest.mock("../../repositories/domain-event");

@@ -10,8 +10,6 @@ variable "region" {
   description = "Region the API infrastructure is created in."
 }
 
-variable "cognito_user_pool_id" {
-  type        = string
-  nullable    = false
-  description = "Cogntio user pool ID."
+data "aws_cognito_user_pools" "cognito_user_pool" {
+   name = "neumba-user-pool-${var.stage}"
 }

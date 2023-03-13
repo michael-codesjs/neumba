@@ -1,7 +1,7 @@
 
 import { EventBridgeClient, PutEventsCommand } from "@aws-sdk/client-eventbridge";
-import { DomainEvent } from "../../../../../../../../../shared/typescript/types/domain";
-import { configureEnviromentVariables } from "../../../../../../../../../shared/typescript/utilities/functions/miscellanous";
+import { DomainEvent } from "@shared/types/domain";
+import { configureEnviromentVariables } from "@shared/utilities/functions/miscellanous";
 import { EventAdapter } from "../../../interfaces";
 
 const { REGION, CENTRAL_EVENT_BUS_NAME } = configureEnviromentVariables();

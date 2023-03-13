@@ -1,5 +1,5 @@
-import { AWS } from "../../../../../../../../../shared/typescript/types";
-import { handlerPath } from "../../../../../../../../../shared/typescript/utilities/functions/miscellanous";
+import { AWS } from "@shared/types";
+import { handlerPath } from "@shared/utilities/functions/miscellanous";
 
 // 'getEstate' lambda function sls definition.
 export const definition: AWS.ServerlessLambdaFunction = {

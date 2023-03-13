@@ -1,6 +1,5 @@
-import { DomainCommand, DomainEvent } from "../../../../../../../../shared/typescript/types/domain";
-import { CreateEstateParams, EstateDTO } from "../../types";
-import { CoordinatesDTO } from "../../types/coordinates";
+import { DomainCommand, DomainEvent } from "@shared/types/domain";
+import { CreateEstateParams, EstateDTO, CoordinatesDTO } from "@typings";
 
 export type GetEstateDomainCommandPayload = { id: string };
 export type GET_ESTATE_DOMAIN_COMMAND = DomainCommand<string, "GET_ESTATE", GetEstateDomainCommandPayload, "1.0.0">;

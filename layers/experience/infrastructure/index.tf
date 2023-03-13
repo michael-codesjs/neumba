@@ -23,15 +23,8 @@ variable "region" {
   description = "Region the infrastructure is created in."
 }
 
-module "authentication" {
-  source = "./authentication"
-  stage  = var.stage
-  region = var.region
-}
-
 module "api" {
   source               = "./api"
   stage                = var.stage
   region               = var.region
-  cognito_user_pool_id = module.authentication.cognito_user_pool_id
 }

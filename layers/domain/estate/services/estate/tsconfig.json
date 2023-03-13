@@ -1,33 +1,36 @@
 {
   "compilerOptions": {
-    "lib": ["ES2020"],
-    "target": "ES2020",
-    "outDir": "bin",
-    "moduleResolution": "node",
+    "target": "ES5",
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "removeComments": true,
-    "sourceMap": true,
-    "esModuleInterop": true,
+    "disableSourceOfProjectReferenceRedirect": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "outDir": "bin",
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "@shared": ["../../../../shared/typescript/sdk/src/index.ts"],
+      "@shared/*": ["../../../../shared/typescript/sdk/src/*"],
+      "@adapters/*": ["application/adapters/*"],
+      "@domain/*": ["application/domain/*"],
+      "@errors/*": ["application/errors/*"],
+      "@errors": ["application/errors/index.ts"],
+      "@interfaces/*": ["application/interfaces/*"],
+      "@interfaces": ["application/errors/index.ts"],
+      "@repositories/*": ["application/repositories/*"],
+      "@repositories": ["application/repositories/index.ts"],
+      "@typings/*": ["application/types/*"],
+      "@typings": ["application/types/index.ts"],
+      "@use-cases/*": ["application/use-cases/*"],
+      "@use-cases": ["application/use-cases/index.ts"],
+      "@utilities/*": ["application/utilities/*"]
+    }
   },
-  "include": [
-    "**/*.ts",
-    "**/*.js",
-  ],
-  "exclude": [
-    "node_modules/**/*",
-    ".serverless/**/*",
-    ".webpack/**/*",
-    "_warmup/**/*",
+  "references": [
+    { "path": "../../../../shared/typescript/sdk" }
   ],
   "typeAcquisition": {
     "include": ["jest"]
-  },
-  "ts-node": {
-    
-  },
-  "typedocOptions": {
-    "mode": "modules",
-    "out": "./docs"
   }
 }

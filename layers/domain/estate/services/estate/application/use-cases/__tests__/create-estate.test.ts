@@ -1,7 +1,7 @@
-import { Estate } from "../../domain/entities/estate/entity";
-import { EstateRepository } from "../../repositories/estate";
-import { CreateEstateParams, EstateDTO } from "../../types";
-import { getRandomEstateAttributes } from "../../utilities/testing";
+import { Estate } from "@domain/entities/estate/entity";
+import { EstateRepository } from "@repositories/estate";
+import { CreateEstateParams, EstateDTO } from "@typings";
+import { getRandomEstateAttributes } from "@utilities/testing";
 import { createEstate } from "../create-estate";
 
 jest.mock("../../domain/entities/estate/entity");

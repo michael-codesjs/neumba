@@ -1,7 +1,7 @@
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { Table } from 'dynamodb-onetable';
 import { Dynamo } from 'dynamodb-onetable/Dynamo';
-import { configureEnviromentVariables } from "../../../../../../../../../../../shared/typescript/utilities/functions/miscellanous";
+import { configureEnviromentVariables } from "@shared/utilities/functions/miscellanous";
 
 const {
   ESTATE_DYNAMODB_TABLE_NAME,

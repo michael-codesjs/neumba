@@ -1,7 +1,7 @@
-import { EstateDynamoDbAdapter } from "../../adapters/secondary/estate/dynamoDb/adapter";
-import { getRandomEstateAttributes } from "../../utilities/testing";
-import { Estate } from "../../domain/entities/estate";
-import { EstateDTO } from "../../types";
+import { EstateDynamoDbAdapter } from "@adapters/secondary/estate/dynamoDb/adapter";
+import { getRandomEstateAttributes } from "@utilities/testing";
+import { Estate } from "@domain/entities/estate";
+import { EstateDTO } from "@typings";
 import { EstateRepository } from "../estate";
 
 jest.mock("../../adapters/secondary/estate/dynamoDb/adapter");

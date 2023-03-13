@@ -1,8 +1,8 @@
 import { Context } from "aws-lambda";
-import { CommonInputEvent } from "../../../../../../../../../../shared/typescript/middleware/common-lambda-input/types";
-import { CREATE_ESTATE_DOMAIN_COMMAND } from "../../../../domain/events";
-import { createEstate as createEstateUseCase } from "../../../../use-cases";
-import { getRandomEstateAttributes } from "../../../../utilities/testing";
+import { CommonInputEvent } from "@shared/middleware/common-lambda-input/types";
+import { CREATE_ESTATE_DOMAIN_COMMAND } from "@domain/events";
+import { createEstate as createEstateUseCase } from "@use-cases";
+import { getRandomEstateAttributes } from "@utilities/testing";
 import { handler as createEstateHandler } from "../../create-estate/handler";
 
 jest.mock("../../../../use-cases");

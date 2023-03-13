@@ -12,7 +12,7 @@ const execAsync = (command: string, options: any) => new Promise((res) => {
 });
 
 const copySchema = () => new Promise((res) => {
-	copyFile("shared/graphql/schema.graphql", "config/schema.graphql", (err) => res(err === null));
+	copyFile("@shared/graphql/schema.graphql", "config/schema.graphql", (err) => res(err === null));
 });
 
 const deleteCopiedSchema = () => new Promise((res) => {

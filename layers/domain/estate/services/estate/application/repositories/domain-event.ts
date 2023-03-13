@@ -1,6 +1,6 @@
-import { DomainEvent as TDomainEvent } from "../../../../../../../shared/typescript/types/domain";
-import { EventBridgeAdapter } from "../adapters/secondary";
-import { EventAdapter } from "../interfaces";
+import { DomainEvent as TDomainEvent } from "@shared/types/domain";
+import { EventBridgeAdapter } from "@adapters/secondary";
+import { EventAdapter } from "@interfaces";
 
 export class DomainEventsRepository {
 

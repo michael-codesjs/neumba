@@ -1,5 +1,5 @@
-import { EstateRepository } from "../repositories/estate";
-import { EstateDTO, GetEstateParams } from "../types";
+import { EstateRepository } from "@repositories";
+import { EstateDTO, GetEstateParams } from "@typings";
 
 export const getEstate = async (params: GetEstateParams): Promise<EstateDTO> => {
 
