@@ -1,4 +1,4 @@
-import { EstateNotFound } from "@errors/estate-not-found";
+import { EstateNotFound } from "@errors";
 import { EstateRepository } from "@repositories";
 
 export type DeleteEstateUseCaseParams = {

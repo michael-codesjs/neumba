@@ -1,4 +1,4 @@
-import { Estate } from "@domain/entities/estate";
+import { Estate } from "@domain/entities";
 import { EstateRepository } from "@repositories";
 import { CreateEstateParams, EstateDTO } from "@typings";
 

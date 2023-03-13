@@ -1,9 +1,7 @@
-import { withCommonInput, withLambdaIOStandard } from "@shared/hofs";
-import { apiGwInputTransformer } from "@shared//middleware";
-import { CommonInputHandler } from "@shared/middleware/common-lambda-input/types";
-import { GetEstateDomainCommandPayload, GET_ESTATE_DOMAIN_COMMAND } from "domain/events";
-import { EstateDTO } from "types";
-import { getEstate } from "use-cases";
+import { GetEstateDomainCommandPayload, GET_ESTATE_DOMAIN_COMMAND } from "@domain/events";
+import { apiGwInputTransformer, CommonInputHandler, withCommonInput, withLambdaIOStandard } from "@shared";
+import { EstateDTO } from "@typings";
+import { getEstate } from "@use-cases";
 
 const inputMapper = async (input: GET_ESTATE_DOMAIN_COMMAND): Promise<EstateDTO> => {
   return await getEstate(input.payload);
@@ -17,11 +15,11 @@ export const handler: CommonInputHandler<GET_ESTATE_DOMAIN_COMMAND, EstateDTO> =
 /** 'getEstate' lambda function handler wrapped in required middleware. */
 export const main = (
   withLambdaIOStandard(handler)
-  .use(apiGwInputTransformer((input: GetEstateDomainCommandPayload): GET_ESTATE_DOMAIN_COMMAND => ({
-    date: new Date(),
-    name: "GET_ESTATE",
-    payload: input,
-    version: "1.0.0",
-    source: "apiGwInputTransformer"
-  })))
+    .use(apiGwInputTransformer((input: GetEstateDomainCommandPayload): GET_ESTATE_DOMAIN_COMMAND => ({
+      date: new Date(),
+      name: "GET_ESTATE",
+      payload: input,
+      version: "1.0.0",
+      source: "apiGwInputTransformer"
+    })))
 );

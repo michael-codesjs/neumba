@@ -1,5 +1,5 @@
-import { Estate } from "@domain/entities/estate/entity";
-import { EstateRepository } from "@repositories/estate";
+import { Estate } from "@domain/entities";
+import { EstateRepository } from "@repositories";
 import { EstateDTO } from "@typings";
 import { getRandomEstateAttributes } from "@utilities/testing";
 import { deleteEstate } from "../";

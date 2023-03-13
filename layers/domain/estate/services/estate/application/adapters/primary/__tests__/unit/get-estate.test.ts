@@ -1,5 +1,5 @@
 import { Context } from "aws-lambda";
-import { CommonInputEvent } from "@shared/middleware/common-lambda-input/types";
+import { CommonInputEvent } from "@shared";
 import { GET_ESTATE_DOMAIN_COMMAND } from "@domain/events";
 import { getEstate as getEstateUseCase } from "@use-cases";
 import { getRandomEstateAttributes } from "@utilities/testing";

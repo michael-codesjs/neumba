@@ -1,6 +1,5 @@
 import { CREATE_ESTATE_DOMAIN_COMMAND } from "@domain/events";
-import { withCommonInput, withLambdaIOStandard } from "@shared/hofs";
-import { CommonInputHandler } from "@shared/middleware/common-lambda-input/types";
+import { withCommonInput, withLambdaIOStandard, CommonInputHandler } from "@shared";
 import { EstateDTO } from "@typings";
 import { createEstate } from "@use-cases";
 

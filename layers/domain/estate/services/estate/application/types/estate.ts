@@ -1,4 +1,4 @@
-import { CoordinatesDTO } from "../types/coordinates";
+import { CoordinatesDTO } from "@typings";
 
 export type EstateDTO = {
   entityType: "ESTATE",

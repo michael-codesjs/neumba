@@ -1,6 +1,4 @@
-import { AggregateRoot, ValueObject } from "@shared";
-import { NotPutable, NotUpdateable } from "@shared/abstracts/errors";
-import { DomainEvent } from "@shared/types/domain";
+import { AggregateRoot, ValueObject, NotPutable, NotUpdateable, DomainEvent } from "@shared";
 import { CoordinatesDTO, EstateDTO } from "@typings";
 import { UpdateEstateParams, CreateEstateParams } from "./types";
 

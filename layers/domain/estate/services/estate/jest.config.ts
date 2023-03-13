@@ -9,14 +9,17 @@ const jestConfig: JestConfigWithTsJest = {
   testEnvironment: 'node',
   testMatch: ['**/*.test.ts'],
   modulePaths: [compilerOptions.baseUrl],
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths),
+  moduleNameMapper: {
+    ...pathsToModuleNameMapper(compilerOptions.paths),
+    "^@shared$": "<rootDir>/../../../../../layers/shared/typescript/sdk/src/index.ts"
+  },
   transform: {
     '^.+\\.ts?$': ['ts-jest', {
-      tsconfig: "tsconfig.json",
+      tsconfig: "./tsconfig.json",
       isolatedModules: true
     }]
   },
-  moduleDirectories: ['node_modules', "."]
+  moduleDirectories: ['node_modules'],
 };
 
 export default jestConfig;

@@ -1,8 +1,7 @@
-import { withCommonInput, withLambdaIOStandard } from "@shared/hofs";
-import { CommonInputHandler } from "@shared/middleware/common-lambda-input/types";
-import { UPDATE_ESTATE_DOMAIN_COMMAND } from "domain/events";
-import { EstateDTO } from "types";
-import { updateEstate } from "use-cases";
+import { withCommonInput, withLambdaIOStandard, CommonInputHandler } from "@shared";
+import { UPDATE_ESTATE_DOMAIN_COMMAND } from "@domain/events";
+import { EstateDTO } from "@typings";
+import { updateEstate } from "@use-cases";
 
 const inputMapper = async (input: UPDATE_ESTATE_DOMAIN_COMMAND): Promise<EstateDTO> => {
   const { payload } = input;

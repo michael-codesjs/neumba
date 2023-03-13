@@ -1,4 +1,4 @@
-import { DomainEvent as TDomainEvent } from "@shared/types/domain";
+import { DomainEvent as TDomainEvent } from "@shared";
 import { EventBridgeAdapter } from "@adapters/secondary";
 import { EventAdapter } from "@interfaces";
 

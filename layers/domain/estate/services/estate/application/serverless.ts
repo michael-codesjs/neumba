@@ -1,5 +1,5 @@
-import { AWS } from "@shared/types";
-import { createEstate, deleteEstate, getEstate, publishEstateCreatedEvent, publishEstateUpdatedEvent, updateEstate } from "./adapters/primary";
+import { AWS } from "@shared";
+import { createEstate, deleteEstate, getEstate, publishEstateCreatedEvent, publishEstateUpdatedEvent, updateEstate } from "@adapters/primary";
 
 const serverlessConfiguration: AWS.Service = {
 

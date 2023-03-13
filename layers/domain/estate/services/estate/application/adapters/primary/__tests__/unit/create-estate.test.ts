@@ -1,5 +1,5 @@
 import { Context } from "aws-lambda";
-import { CommonInputEvent } from "@shared/middleware/common-lambda-input/types";
+import { CommonInputEvent } from "@shared";
 import { CREATE_ESTATE_DOMAIN_COMMAND } from "@domain/events";
 import { createEstate as createEstateUseCase } from "@use-cases";
 import { getRandomEstateAttributes } from "@utilities/testing";

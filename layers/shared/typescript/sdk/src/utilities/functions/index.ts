@@ -1,3 +1,3 @@
-export * as isLiteral from "./is-literal-that";
-export * as miscellanous from "./miscellanous";
-export * as time from "./time";
+export * from "./is-literal-that";
+export * from "./miscellanous";
+export * from "./time";

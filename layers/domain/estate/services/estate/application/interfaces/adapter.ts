@@ -1,4 +1,4 @@
-import { DomainEvent } from "@shared/types/domain";
+import { DomainEvent } from "@shared";
 import { EstateDTO } from "@typings";
 
 export interface EstateDatabaseAdapter {

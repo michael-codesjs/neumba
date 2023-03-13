@@ -1,7 +1,7 @@
-export const object = (obj: any): obj is Object => {
+export const isLiteralObject = (obj: any): obj is Object => {
 	return (!!obj) && (obj.constructor === Object);
 };
 
-export const array = <T = any>(arr: any): arr is Array<T> => {
+export const isLiteralArray = <T = any>(arr: any): arr is Array<T> => {
 	return Array.isArray(arr);
 };

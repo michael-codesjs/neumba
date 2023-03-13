@@ -1,5 +1,4 @@
-import { ValueObject } from "@shared/abstracts";
-import { DomainEvent } from "@shared/types/domain";
+import { ValueObject, DomainEvent } from "@shared";
 import { CoordinatesDTO } from "@typings";
 
 /** Coordinates value object. */

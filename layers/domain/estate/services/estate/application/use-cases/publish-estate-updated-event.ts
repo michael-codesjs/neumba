@@ -1,4 +1,4 @@
-import { ESTATE_UPDATED_DOMAIN_EVENT } from "@domain/events/types";
+import { ESTATE_UPDATED_DOMAIN_EVENT } from "@domain/events";
 import { DomainEventsRepository } from "@repositories";
 import { EstateDTO } from "@typings";
 

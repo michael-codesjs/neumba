@@ -1,5 +1,4 @@
-import { AWS } from "@shared/types";
-import { handlerPath } from "@shared/utilities/functions/miscellanous";
+import { AWS, handlerPath } from "@shared";
 
 // 'publishEstateCreatedEvent' lambda function sls definition.
 export const definition: AWS.ServerlessLambdaFunction = {

@@ -1,6 +1,4 @@
-import { withCommonInput, withLambdaIOStandard } from "@shared/hofs";
-import { CommonInputHandler } from "@shared/middleware/common-lambda-input/types";
-import { DbStreamInput } from "@shared/types/io";
+import { withCommonInput, withLambdaIOStandard, CommonInputHandler, DbStreamInput } from "@shared";
 import { EstateDTO } from "@typings";
 import { publishEstateCreatedEvent } from "@use-cases";
 

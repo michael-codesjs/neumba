@@ -1,8 +1,7 @@
 ## **Neumba - Real-estate & Estate Management.**
 This repository contains everything that makes up the **nuemba** real-estate and estate managment platform.
-### [**Figma Prototype**](https://www.figma.com/proto/8fY3z6IapqSPoycTo2vKZM/The-Prototype-%26-Wireframes?page-id=0%3A1&node-id=101%3A4&viewport=575%2C416%2C0.25&scaling=scale-down&starting-point-node-id=101%3A4)
-
-## **INSTALLATION**
+### [**The Figma Prototype**](https://www.figma.com/proto/8fY3z6IapqSPoycTo2vKZM/The-Prototype-%26-Wireframes?page-id=0%3A1&node-id=101%3A4&viewport=575%2C416%2C0.25&scaling=scale-down&starting-point-node-id=101%3A4)
+**INSTALLATION**
 ### **Terraform**
 This project uses [**Terraform**](https://www.terraform.io/) to provision non-service related infrastructure to AWS. Install the CLI by following [**these**](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) instructions.
 ### **NodeJS/Typescript**

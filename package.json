@@ -8,6 +8,9 @@
       "layers/**/*"
     ]
   },
+  "scripts": {
+    "dev": "lerna run build:watch --scope='@shared/sdk' --stream"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/michael-codesjs/neumba.git"

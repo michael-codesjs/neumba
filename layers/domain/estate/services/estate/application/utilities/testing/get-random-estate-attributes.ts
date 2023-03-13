@@ -1,4 +1,4 @@
-import Chance from "chance";
+import { Chance } from "chance";
 import { CreateEstateParams, EstateDTO } from "@typings";
 
 const chance = new Chance();

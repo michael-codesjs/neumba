@@ -1,4 +1,4 @@
-import { DomainCommand, DomainEvent } from "@shared/types/domain";
+import { DomainCommand, DomainEvent } from "@shared";
 import { CreateEstateParams, EstateDTO, CoordinatesDTO } from "@typings";
 
 export type GetEstateDomainCommandPayload = { id: string };
