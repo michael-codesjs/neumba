@@ -1,4 +1,4 @@
-import{ AWS, handlerPath } from "@shared";
+import { AWS, handlerPath } from "@shared";
 
 // 'createEstate' lambda function sls definition.
 export const definition: AWS.ServerlessLambdaFunction = {

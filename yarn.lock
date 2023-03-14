@@ -3549,6 +3549,11 @@ cross-spawn@^7.0.3:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
+crypto-secure-random-digit@^1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/crypto-secure-random-digit/-/crypto-secure-random-digit-1.0.10.tgz#68cba3079e3bd0ea2d0df8eecef6f63101c9e7e2"
+  integrity sha512-s8lDlKys87l8++pXrY8SxX3Uu31lQrpQDlPRGmR4r3y3iRqQiXj9ejAF1TsCU4w38mIXR72D571ujqzT+rcpCA==
+
 d@1, d@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/d/-/d-1.0.1.tgz#8698095372d58dbee346ffd0c7093f99f8f9eb5a"
@@ -7604,7 +7609,7 @@ serverless-step-functions@^3.11.1:
     chalk "^4.1.2"
     lodash "^4.17.11"
 
-serverless@^3.0.0:
+serverless@^3.2.0:
   version "3.28.1"
   resolved "https://registry.yarnpkg.com/serverless/-/serverless-3.28.1.tgz#2bdd90984a2d9dbd64694a57ee9105f4b0cffa9b"
   integrity sha512-zC+8ItbRYtJkIY5YZkU5RrCGd+JPkn8DUeGpHX6C9NKV/555DppiaMXURcNWJqN6VFV3fhmZrtefTzDF/B6+Rg==
