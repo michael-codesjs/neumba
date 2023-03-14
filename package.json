@@ -9,7 +9,8 @@
     ]
   },
   "scripts": {
-    "dev": "lerna run build:watch --scope='@shared/sdk' --stream"
+    "build-shared": "lerna run build --scope='@shared/sdk'",
+    "build-shared:watch": "lerna run build:watch --scope='@shared/sdk' --stream"
   },
   "repository": {
     "type": "git",

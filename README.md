@@ -1,9 +1,9 @@
 ## **Neumba - Real-estate & Estate Management.**
-This repository contains everything that makes up the **nuemba** real-estate and estate managment platform.
-### [**The Figma Prototype**](https://www.figma.com/proto/8fY3z6IapqSPoycTo2vKZM/The-Prototype-%26-Wireframes?page-id=0%3A1&node-id=101%3A4&viewport=575%2C416%2C0.25&scaling=scale-down&starting-point-node-id=101%3A4)
-**INSTALLATION**
+This repository contains everything that makes up the **nuemba** real-estate and estate managment platform. Everything from serverless microservices, to micro-frontends to the flutter native app. UI Designs for this project are done using Figma and the prototype can be found [**here**](https://www.figma.com/proto/8fY3z6IapqSPoycTo2vKZM/The-Prototype-%26-Wireframes?page-id=0%3A1&node-id=101%3A4&viewport=575%2C416%2C0.25&scaling=scale-down&starting-point-node-id=101%3A4).
+
+## **INSTALLATION**
 ### **Terraform**
-This project uses [**Terraform**](https://www.terraform.io/) to provision non-service related infrastructure to AWS. Install the CLI by following [**these**](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) instructions.
+This project uses [**Terraform**](https://www.terraform.io/) for most of our infrastructure provisioning to AWS. Install the CLI by following [**these**](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) instructions.
 ### **NodeJS/Typescript**
 This project contains several NodeJS packages in one monorepo using tools like [yarn workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/) and [lerna](https://lerna.js.org/). Install dependencies of all packages by running the following command in the workspace directory, i.e the root project directory.
 
@@ -11,16 +11,16 @@ This project contains several NodeJS packages in one monorepo using tools like [
 yarn install
 ```
 
-You'll then have to build the **shared** packages. Do this by running the following command in the workspace directory. The shared package contains common functions, types & constants. 
+You'll then have to build the **shared** packages, these shared packages are reference by almost every other package and we'll need to be compiled to do so. Do this by running the following command in the workspace directory. The shared package contains common functions, types & constants. 
 
 ```shell
-yarn lerna build shared
+yarn build-shared
 ```
 
-If you intend to work on this, you're most likely to change the shared packages often. I advice you run the following command to have lerna build the shared packages everytime you make changes to them.
+If you intend to work on this and are like, you'll find yourself changing the shared packages often. I advice you run the following command to have lerna build the shared packages everytime you make changes to them.
 
 ```shell
-yarn lerna build shared --watch
+yarn build-shared:watch
 ```
 
 ## **Deploying & Destroying**
