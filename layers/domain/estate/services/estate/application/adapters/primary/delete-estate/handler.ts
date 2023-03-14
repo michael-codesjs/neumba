@@ -1,7 +1,5 @@
 import { DELETE_ESTATE_DOMAIN_COMMAND } from "@domain/events";
-import { withCommonInput, withLambdaIOStandard } from "@shared/hofs";
-import { CommonInputHandler } from "@shared/middleware/common-lambda-input/types";
-import { OpearationResponse } from "@shared/types/io";
+import { CommonInputHandler, OpearationResponse, withCommonInput, withLambdaIOStandard } from "@shared";
 import { deleteEstate } from "@use-cases";
 
 const inputMapper = async (input: DELETE_ESTATE_DOMAIN_COMMAND): Promise<OpearationResponse> => {

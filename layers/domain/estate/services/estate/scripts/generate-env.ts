@@ -14,8 +14,8 @@ const ssmClient = new SSMClient({ region: process.env.AWS_REGION || "eu-central-
 /** POJO of envioment variables and their respective SSM parameter paths. */
 const VARIABLES = Object.freeze({
   ESTATE_DYNAMODB_TABLE_NAME: "/neumba/dev/service/estate/infrastructure/storage/table/estate/name",
-  REST_API_URL: "/estate/dev/domain/estate/infrastructure/api/url",
-  DOMAIN_EVENT_BUS_NAME: "/neumba/dev/domain/estate/infrastructure/domain-io/event-bus/name",
+  REST_API_URL: "/neumba/dev/infrastructure/io/central/api/url",
+  CENTRAL_EVENT_BUS_NAME: "/neumba/dev/infrastructure/io/event-bus/central/name",
   COGNITO_USER_POOL_ID: "/neumba/dev/infrastructure/authentication/user-pool/id",
   COGNITO_CLIENT_ID: "/neumba/dev/infrastructure/authentication/user-pool/client/web/id",
   GRAPHQL_API_ENDPOINT: "/neumba/dev/infrastructure/api/graphql/endpoint"
@@ -48,7 +48,7 @@ const VARIABLES = Object.freeze({
 
     } catch (error) {
 
-      spinner.fail(`Failed to retrieve ${chalk.bold(variable)} value from SSM path ${chalk.blueBright(name)}`);
+      spinner.fail(`Failed to retrieve ${chalk.bold(variable)} value from SSM path ${chalk.blueBright.bold(name)}`);
 
     }
 

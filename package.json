@@ -1,16 +1,17 @@
 {
-  "name": "@neumba/workspace",
+  "name": "@workspace/root",
   "version": "0.0.1",
-  "description": "neumba project workspace.",
+  "description": "neumba root workspace.",
   "private": true,
   "workspaces": {
     "packages": [
-      "layers/**/*"
+      "layers/**"
     ]
   },
   "scripts": {
     "build-shared": "lerna run build --scope='@shared/sdk'",
-    "build-shared:watch": "lerna run build:watch --scope='@shared/sdk' --stream"
+    "build-shared:watch": "lerna run build:watch --scope='@shared/sdk' --stream",
+    "test": "lerna run test --stream"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,8 @@
   "homepage": "https://github.com/michael-codesjs/neumba#readme",
   "devDependencies": {
     "lerna": "^6.5.1",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "ts-node": "^10.9.1"
   },
   "packageManager": "yarn@3.4.1"
 }
