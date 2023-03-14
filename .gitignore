@@ -2,7 +2,10 @@
 bin
 dist
 tsconfig.tsbuildinfo
-# .vscode should also be included when and if I'll get more people to work on this.
+
+# backups
+
+
 # package directories
 node_modules
 jspm_packages

@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "ES5",
     "declaration": true,
+    "module": "CommonJS",
     "declarationMap": true,
     "sourceMap": true,
     "composite": true,
@@ -10,8 +11,12 @@
     "disableSourceOfProjectReferenceRedirect": true,
     "skipLibCheck": true,
     "noUnusedLocals": false,
-    "noUnusedParameters": false
+    "noUnusedParameters": false,
+    "esModuleInterop": true
   },
   "include": ["src"],
-  "exclude": ["*test.ts", "node_modules"]
+  "exclude": [
+    "**/__tests__/**/*.test.ts",
+    "node_modules"
+  ]
 }

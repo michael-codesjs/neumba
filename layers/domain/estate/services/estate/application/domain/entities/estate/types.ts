@@ -1,4 +1,4 @@
-import { AttributeSchema, CommonAttributes } from "@shared/abstracts/types";
+import { AttributeSchema, CommonAttributes } from "@shared";
 import { CoordinatesDTO } from "@typings";
 
 export type AttributesSchema = CommonAttributes & {

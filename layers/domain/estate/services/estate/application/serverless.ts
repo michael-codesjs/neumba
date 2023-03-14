@@ -1,5 +1,5 @@
 import { AWS } from "@shared";
-import { createEstate, deleteEstate, getEstate, publishEstateCreatedEvent, publishEstateUpdatedEvent, updateEstate } from "@adapters/primary";
+import * as functions from "@adapters/primary";
 
 const serverlessConfiguration: AWS.Service = {
 
@@ -47,14 +47,7 @@ const serverlessConfiguration: AWS.Service = {
 
   },
 
-  functions: {
-    createEstate,
-    deleteEstate,
-    getEstate,
-    estateCreatedEvent: publishEstateCreatedEvent,
-    estateUpdatedEvent: publishEstateUpdatedEvent,
-    updateEstate
-  }
+  functions
 
 };
 

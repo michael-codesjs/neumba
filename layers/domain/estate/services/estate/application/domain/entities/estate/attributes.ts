@@ -14,6 +14,8 @@ export class Attributes extends AbstractAttribtues<AttributesSchema> {
 			name: new Attribute({ required: true, value: null }),
 			coordinates: new Coordinates()
 		});
+
+		this.collective
 	}
 
 	parse(attributes: Partial<EntriesFromAttributesSchema<AttributesSchema>>): void {

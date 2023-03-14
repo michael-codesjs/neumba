@@ -1,7 +1,7 @@
 import { Context } from "aws-lambda";
 import { CommonInputEvent } from "@shared";
 import { UPDATE_ESTATE_DOMAIN_COMMAND } from "@domain/events";
-import { updateEstate as updateEstateUseCase } from "@use-cases/update-estate";
+import { updateEstate as updateEstateUseCase } from "@use-cases";
 import { getRandomEstateAttributes } from "@utilities/testing";
 import { handler as updateEstateHandler } from "../../update-estate/handler";
 
@@ -12,6 +12,7 @@ describe("Update Estate", () => {
   afterAll(() => {
     jest.clearAllMocks();
   });
+
 
   let mockedUpdateEstateUseCase: jest.MockedFunctionDeep<typeof updateEstateUseCase> = jest.mocked(updateEstateUseCase);
 
