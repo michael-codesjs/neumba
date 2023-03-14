@@ -1,9 +1,10 @@
 import { AWS } from "@shared";
 import * as functions from "@adapters/primary";
 
+/** Serverless configuration for the 'user' service. */
 const serverlessConfiguration: AWS.Service = {
 
-  service: "neumba-cognito",
+  service: "neumba-user",
   frameworkVersion: "3",
 
   provider: {

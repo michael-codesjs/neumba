@@ -17,7 +17,7 @@ const VARIABLES = Object.freeze({
   REST_API_URL: "/neumba/dev/infrastructure/io/central/api/url",
   CENTRAL_EVENT_BUS_NAME: "/neumba/dev/infrastructure/io/event-bus/central/name",
   COGNITO_USER_POOL_ID: "/neumba/dev/infrastructure/authentication/user-pool/id",
-  COGNITO_CLIENT_ID: "/neumba/dev/infrastructure/authentication/user-pool/client/web/id",
+  COGNITO_CLIENT_ID: "/neumba/dev/infrastructure/authentication/user-pool/client/main/id",
   GRAPHQL_API_ENDPOINT: "/neumba/dev/infrastructure/api/graphql/endpoint"
 });
 

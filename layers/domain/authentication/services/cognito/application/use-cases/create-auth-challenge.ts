@@ -1,7 +1,7 @@
-import { configureEnviromentVariables, WithPartial, DEFAULT_OTP } from "@shared";
-import digitGenerator from "crypto-secure-random-digit";
+import { configureEnviromentVariables, WithPartial, DEFAULT_AUTH_CHALLENGE } from "@shared";
+import * as digitGenerator from "crypto-secure-random-digit";
 
-const { STAGE } = configureEnviromentVariables();
+configureEnviromentVariables();
 
 export type CreateAuthChallengeUseCaseParamsAllRequired = { email: string, phoneNumber: string };
 export type CreateAuthChallengeUseCaseParamsEmailRequired = WithPartial<CreateAuthChallengeUseCaseParamsAllRequired, "phoneNumber">;
@@ -24,7 +24,8 @@ export const createAuthChallenge: CreateAuthChallengeUseCase = async (params) =>
 
     if(!("email" in params) && !("phoneNumber" in params)) throw new Error("Either email or phoneNumber is required.");
 
-    const challenge = STAGE === "prod" ? digitGenerator.randomDigits(6).join("") : DEFAULT_OTP; // genereate 6 digit OTP in prod, use DEFAULT_OTP in other stages.
+    const STAGE = process.env.STAGE;
+    const challenge = STAGE === "prod" ? digitGenerator.randomDigits(6).join("") : DEFAULT_AUTH_CHALLENGE; // genereate 6 digit OTP in prod, use DEFAULT_OTP in other stages.
 
     // TODO: send sms & email.
 

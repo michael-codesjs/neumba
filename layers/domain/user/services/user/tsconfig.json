@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "removeComments": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "baseUrl": "application",
+    "paths": {
+      "@shared": ["../../../../../shared/typescript/sdk/src/index.ts"],
+      "@adapters/*": ["adapters/*"],
+    }
+  },
+  "references": [
+    { "path": "../../../../shared/typescript/sdk" }
+  ],
+  "include": [
+    "serverless.ts",
+    "application/**/*.ts"
+  ],
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  },
+  "typeAcquisition": {
+    "include": ["jest"]
+  }
+}

@@ -1,8 +1,12 @@
 resource "aws_cognito_user_pool" "user_pool" {
 
   name                = "neumba-user-pool-${var.stage}"
-  username_attributes = ["email"]
   deletion_protection = var.stage == "prod" ? "ACTIVE" : "INACTIVE"
+
+  username_attributes = ["phone_number", "email"]
+  username_configuration {
+    case_sensitive = true
+  }
 
   password_policy {
     minimum_length    = 7
@@ -28,6 +32,8 @@ resource "aws_cognito_user_pool" "user_pool" {
       lambda_config
     ]
   }
+
+  mfa_configuration = "OFF"
 
 }
 

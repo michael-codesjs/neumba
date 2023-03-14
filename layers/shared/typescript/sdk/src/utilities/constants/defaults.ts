@@ -1,1 +1,1 @@
-export const DEFAULT_OTP = "214323";
+export const DEFAULT_AUTH_CHALLENGE = "214323";

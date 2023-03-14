@@ -2,6 +2,7 @@ import { withLambdaStandard } from "@shared";
 import { createAuthChallenge, CreateAuthChallengeUseCaseParamsAllRequired } from "@use-cases/create-auth-challenge";
 import { CreateAuthChallengeTriggerHandler } from "aws-lambda";
 
+/** 'createAuthChallenge' lambda function handler. */
 const handler: CreateAuthChallengeTriggerHandler = async event => {
 
     const { email, phoneNumber } = event.request.userAttributes;
